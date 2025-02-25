@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/pinkmatter/farearth-schemas/refs/heads/main/json-schema/v1.0.18/products/L1C/l1c.metadata.properties.product.json",
+  "title": "Pinkmatter L1C Metadata File",
+  "type": "object",
+  "description": "This schema includes all required fields for a FarEarth metadata file",
+  "properties": {
+    "properties": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "allOf": [
+            {
+              "$ref": "l1c.metadata.properties.product.json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
