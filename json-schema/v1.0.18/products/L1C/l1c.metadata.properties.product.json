@@ -1,0 +1,302 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "Pair" : {
+      "type" : "object",
+      "properties" : {
+        "x" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "y" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "descriptor" : {
+      "type" : "object",
+      "properties" : {
+        "generationDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "productId" : {
+          "type" : "string"
+        },
+        "productType" : {
+          "type" : "string"
+        },
+        "sceneCol" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "sceneRow" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "sensors" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "spacecraft" : {
+          "type" : "string"
+        },
+        "temporalRange" : {
+          "type" : "object"
+        }
+      }
+    },
+    "elevation" : {
+      "type" : "object",
+      "properties" : {
+        "averageHae" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "averageMsl" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    },
+    "pixelCount" : {
+      "type" : "integer",
+      "format" : "int64"
+    },
+    "sensors" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "descriptor" : {
+            "type" : "object",
+            "properties" : {
+              "ancillaries" : {
+                "type" : "object",
+                "properties" : {
+                  "cpf" : {
+                    "type" : "string"
+                  },
+                  "rpf" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "ids" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "name" : {
+                "type" : "string"
+              }
+            }
+          },
+          "images" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "angles" : {
+                  "type" : "object",
+                  "properties" : {
+                    "sunAzimuth" : {
+                      "type" : "number",
+                      "format" : "double"
+                    },
+                    "sunElevation" : {
+                      "type" : "number",
+                      "format" : "double"
+                    },
+                    "viewAzimuth" : {
+                      "type" : "number",
+                      "format" : "double"
+                    },
+                    "viewIncidence" : {
+                      "type" : "number",
+                      "format" : "double"
+                    },
+                    "viewOffNadir" : {
+                      "type" : "number",
+                      "format" : "double"
+                    }
+                  }
+                },
+                "bands" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "geometric" : {
+                  "type" : "object",
+                  "properties" : {
+                    "dimensions" : {
+                      "type" : "object",
+                      "properties" : {
+                        "col" : {
+                          "type" : "integer",
+                          "format" : "int32"
+                        },
+                        "row" : {
+                          "type" : "integer",
+                          "format" : "int32"
+                        }
+                      }
+                    },
+                    "geometry" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "array",
+                        "items" : {
+                          "$ref" : "#/$defs/Pair"
+                        }
+                      }
+                    },
+                    "projection" : {
+                      "type" : "string"
+                    },
+                    "quality" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bandAlignment" : {
+                          "type" : "object",
+                          "properties" : {
+                            "precisionBands" : {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "string"
+                              }
+                            },
+                            "systematicBands" : {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "resolution" : {
+                      "$ref" : "#/$defs/Pair"
+                    }
+                  }
+                },
+                "group" : {
+                  "type" : "string"
+                },
+                "ids" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "image" : {
+                  "type" : "string"
+                },
+                "qaMask" : {
+                  "type" : "string"
+                },
+                "radiometric" : {
+                  "type" : "object",
+                  "properties" : {
+                    "earthSunDistance" : {
+                      "type" : "number",
+                      "format" : "double"
+                    },
+                    "esun" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string"
+                          },
+                          "units" : {
+                            "type" : "string"
+                          },
+                          "value" : {
+                            "type" : "number",
+                            "format" : "double"
+                          }
+                        }
+                      }
+                    },
+                    "spectral" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string"
+                          },
+                          "centerWavelength" : {
+                            "type" : "number",
+                            "format" : "double"
+                          },
+                          "fullWidthHalfMax" : {
+                            "type" : "number",
+                            "format" : "double"
+                          }
+                        }
+                      }
+                    },
+                    "units" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "quality" : {
+            "type" : "object",
+            "properties" : {
+              "geometric" : {
+                "type" : "object",
+                "properties" : {
+                  "metrics" : {
+                    "type" : "object"
+                  },
+                  "orthorectification" : {
+                    "type" : "string",
+                    "enum" : [ "systematic", "precision" ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "thumbnailImageType" : {
+      "type" : "string",
+      "enum" : [ "GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS" ]
+    },
+    "thumbnails" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "image" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "viewingAngles" : {
+      "type" : "string"
+    }
+  }
+}
