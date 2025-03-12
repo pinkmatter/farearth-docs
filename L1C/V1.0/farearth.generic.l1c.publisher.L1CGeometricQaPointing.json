@@ -1,0 +1,40 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "measurements" : {
+      "title" : "Measurements",
+      "description" : "Listed by different sensors.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "metrics" : {
+            "type" : "object",
+            "title" : "L1C geometric pointing metrics",
+            "description" : "Metrics describing how the image location was adjusted from raw to processed, listed by sensor ID."
+          },
+          "orthorectification" : {
+            "type" : "string",
+            "enum" : [ "systematic", "precision" ],
+            "title" : "Orthorectification quality",
+            "description" : "To what model quality orthorectifcation was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'."
+          },
+          "sensorIds" : {
+            "title" : "Sensor IDs",
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "sensorName" : {
+            "type" : "string",
+            "title" : "Sensor name"
+          }
+        }
+      }
+    }
+  },
+  "title" : "L1C geometric pointing metrics",
+  "description" : "Metrics describing how the image location was adjusted from raw to processed."
+}

@@ -1,0 +1,75 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "measurements" : {
+      "title" : "Disparity measurements",
+      "description" : "A list of disparity metrics grouped by individual bands.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "coordsLonLat" : {
+            "title" : "Disparity coordinates",
+            "description" : "The (longitude, lattitude) coordinates of the evaluated tie-points.",
+            "type" : "array",
+            "items" : {
+              "type" : "array",
+              "items" : {
+                "type" : "number",
+                "format" : "double"
+              }
+            }
+          },
+          "disparitiesXYInMeters" : {
+            "title" : "Disparities",
+            "description" : "A list of (x,y) disparities of the evaluated tie-points (in meters).",
+            "type" : "array",
+            "items" : {
+              "type" : "array",
+              "items" : {
+                "type" : "number",
+                "format" : "double"
+              }
+            }
+          },
+          "id" : {
+            "type" : "string",
+            "title" : "Band ID"
+          },
+          "imageName" : {
+            "type" : "string",
+            "title" : "Disparity image file name",
+            "description" : "An illustration of the quality of all the tie-points evaluated on the image."
+          },
+          "refBand" : {
+            "type" : "string",
+            "title" : "Reference band ID",
+            "description" : "The band ID of the reference image being used during comparison."
+          },
+          "refResolution" : {
+            "title" : "Reference resolution",
+            "description" : "The resolution of the reference image used during comparison.",
+            "type" : "array",
+            "items" : {
+              "type" : "number",
+              "format" : "double"
+            }
+          },
+          "refSpacecraft" : {
+            "type" : "string",
+            "title" : "Reference spacecraft",
+            "description" : "The Spacecraft ID of the associated reference image."
+          }
+        }
+      }
+    },
+    "pixelColorMappings" : {
+      "type" : "string",
+      "title" : "Pixel color mappings",
+      "description" : "Mappings used to quantify disparities in color ranges (only for display purposes)."
+    }
+  },
+  "title" : "Absolute geometric disparity metrics",
+  "description" : "Metrics describing the difference between the image when compared to a reference."
+}

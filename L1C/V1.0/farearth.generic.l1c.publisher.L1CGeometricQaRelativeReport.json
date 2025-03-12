@@ -1,0 +1,62 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "measurements" : {
+      "title" : "Disparity measurements",
+      "description" : "A list of disparity metrics grouped by individual bands.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "coordsLatLon" : {
+            "title" : "Disparity coordinates",
+            "description" : "The (longitude, lattitude) coordinates of the evaluated tie-points.",
+            "type" : "array",
+            "items" : {
+              "type" : "array",
+              "items" : {
+                "type" : "number",
+                "format" : "double"
+              }
+            }
+          },
+          "disparitiesXYInMeters" : {
+            "title" : "Disparities",
+            "description" : "A list of (x,y) disparities of the evaluated tie-points (in meters).",
+            "type" : "array",
+            "items" : {
+              "type" : "array",
+              "items" : {
+                "type" : "number",
+                "format" : "double"
+              }
+            }
+          },
+          "from" : {
+            "type" : "string",
+            "title" : "Source band ID",
+            "description" : "The band ID of the source used during comparison."
+          },
+          "imageName" : {
+            "type" : "string",
+            "title" : "Disparity image file name",
+            "description" : "An illustration of the quality of all the tie-points evaluated on the image."
+          },
+          "to" : {
+            "type" : "string",
+            "title" : "Target band ID",
+            "description" : "The band ID of the target used during comparison."
+          }
+        }
+      }
+    },
+    "pixelColorMappings" : {
+      "type" : "string",
+      "title" : "Pixel color mappings",
+      "description" : "Mappings used to quantify disparities in color ranges (only for display purposes)."
+    }
+  },
+  "title" : "Relative geometric disparity metrics",
+  "description" : "Metrics describing the disparity between different bands of the image."
+}
