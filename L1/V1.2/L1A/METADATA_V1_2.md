@@ -1,0 +1,86 @@
+# L1A product meta-data
+
+*JSON meta-data file describing the properties of the L1A product.*
+
+## Properties
+
+- **`descriptor`** *(object)*: Meta-data relevant to the product (Spacecraft, sensor, date-range of the product).
+  - **`generationDate`** *(string, format: date-time)*: The date on which the product was generated.
+  - **`productId`** *(string)*: The ID identifying the product.
+  - **`productType`** *(string)*: This will always be 'L1A'.
+  - **`sceneCol`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the column index will reflect adjacent tiles across track starting counting at 1 for left-most scene. The interval will have at least one column, even it the interval is not subdivided.
+  - **`sceneRow`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the row index will increment proportionally along track (starting at 1).  The interval will have at least one row, even it the interval is not subdivided.
+  - **`sensors`** *(array)*: A list of sensor IDs relevant to the product (if required, with preference for hyphenated separators instead of spaces or underscores).
+    - **Items** *(string)*
+  - **`spacecraft`** *(string)*: The ID of the spacecraft (if required, with preference for hyphenated separators instead of spaces or underscores, e.g., 'LANDSAT-7').
+  - **`temporalRange`** *(object)*: The UTC start and end date of the product (with leap-seconds included).
+    - **`from`**
+      - **One of**
+        - *string*
+        - *number*
+    - **`to`**
+      - **One of**
+        - *string*
+        - *number*
+- **`elevation`** *(object)*: Details relating to the elevation of the product.
+  - **`averageHae`** *(number, format: double)*: The average height above ellipsoid in meters.
+  - **`averageMsl`** *(number, format: double)*: The average mean sea level in meters.
+- **`navAtt`** *(string)*: The file name in which naviation and attitude data of the product can be found.
+- **`pixelCount`** *(integer, format: int64)*: The total number of pixels across all bands of the product.
+- **`scanTimes`** *(string)*: The file name in which all the scan-line scan-times of the product can be found.
+- **`sensors`** *(array)*: Details relating to the sensors relevant to the product.
+  - **Items** *(object)*
+    - **`bands`** *(array)*: The different band-combinations available in the sensor.
+      - **Items** *(object)*
+        - **`geometric`** *(object)*: Geometric meta-data details associated with the band in question.
+          - **`dimensions`** *(array)*: The pixel dimensions of the band. Length must be equal to 2.
+            - **Items** *(number)*
+          - **`geometry`** *(array)*: A sequence of (x,y) points representing the outline of the band (in units described by the projection).
+            - **Items** *(array)*: Length must be equal to 2.
+              - **Items** *(number)*
+          - **`projection`** *(string)*: The projection string used.
+          - **`resolution`** *(array)*: The resolution of a single pixel. Length must be equal to 2.
+            - **Items** *(number)*
+        - **`group`** *(string)*: Which logical group the band belongs to (typically grouped by bands of the same resolution).
+        - **`id`** *(string)*: The ID of the band in question.
+        - **`image`** *(string)*: The file name of which the banded image is available in.
+        - **`name`** *(string)*: The name of the band in question.
+        - **`qaMask`** *(string)*: The file name of a quality mask associated with the banded image data.
+        - **`radiometric`** *(object)*: Radiometric meta-data details associated with the band in question.
+          - **`earthSunDistance`** *(number, format: double)*: The average distance between the center of the earth and the center of the sun in Astronomical Units (AU). Typical values are between 0.9832 and 1.0167.
+          - **`esun`** *(object)*: A mean exo-atmospheric solar irradiance (ESUN) value for the band in question.
+            - **`units`** *(string)*: The units in which the ESUN value is expressed in. Typically 'W / (m^2 * um)'.
+            - **`value`** *(number, format: double)*: A mean exo-atmospheric solar irradiance (ESUN) value for the band in question.
+          - **`solarAzimuth`** *(number, format: double)*: The solar azimuth (in degrees).
+          - **`solarElevation`** *(number, format: double)*: The solar elevation (in degrees).
+          - **`spectral`** *(object)*: A simplified summary of the spectral response of the band in question.
+            - **`centerWavelength`** *(number, format: double)*: The center wavelength of the band's response function (in nanometers).
+            - **`fullWidthHalfMax`** *(number, format: double)*: The full width of half maximum bandwidth of the band's response function (in nanometers).
+          - **`units`** *(string)*: The measurement unit for the radiometric value. Typically 'W / (m^2 * sr)'.
+        - **`rpc`** *(string)*: The rational polynomial coefficients (RPC) file used during processing.
+        - **`sensor`** *(object)*: The sensor configuration for the band in question.
+          - **`acrossBinning`** *(integer, format: int32)*: The number of bins used in the across-track direction.
+          - **`alongBinning`** *(integer, format: int32)*: The number of bins used in the along-track direction.
+          - **`alongScanDirection`** *(string)*: The imaging scanning direction with respect to the along-track direction. Must be one of: `["POSITIVE", "NEGATIVE"]`.
+          - **`sensorStartRow`** *(integer, format: int32)*: The start row used by the band in question.
+        - **`viewingGeometry`** *(array)*: Viewing angles by corner and center pixel coordinates.
+          - **Items** *(object)*
+            - **`incidenceAzimuth`** *(number, format: double)*: The azimuth incidence viewing angle (typically in degrees).
+            - **`incidenceZenith`** *(number, format: double)*: The zenith incidence viewing angle (typically in degrees).
+            - **`pixel`** *(array)*: The pixel coordinate in (x, y). Length must be equal to 2.
+              - **Items** *(number)*
+    - **`descriptor`** *(object)*: Details relating to the imaging sensor (name, detector ID's, etc).
+      - **`ancillaries`** *(object)*: Ancillary reference files used as calibration input during processing.
+        - **`cpf`** *(string)*: The name of the general geometric calibration parameter file used during processing.
+        - **`rpf`** *(string)*: The name of the radiometric calibration parameter file used during processing.
+      - **`dimensions`** *(array)*: The dimensions of the sensor detector (total rows and columns). Length must be equal to 2.
+        - **Items** *(number)*
+      - **`id`** *(string)*: The detector ID associated with the sensor.
+      - **`name`** *(string)*: The name or unique ID for the sensor.
+- **`software`** *(object)*: Details regarding the software used to generate the L1A product.
+  - **`name`** *(string)*
+  - **`version`** *(string)*
+- **`thumbnails`** *(array)*: Thumbnails of different band or sensor combinations.
+  - **Items** *(object)*
+    - **`image`** *(string)*: The file name of the thumbnail.
+    - **`name`** *(string)*: The name of the thumbnail (eg., 'RGB', 'FalseColor' or 'TrueColor').

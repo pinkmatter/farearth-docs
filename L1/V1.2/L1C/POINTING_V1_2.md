@@ -1,4 +1,4 @@
-# L1C geometric pointing metrics ([Home](README.md))
+# L1C geometric pointing metrics
 
 *Metrics describing how the image location was adjusted from raw to processed.*
 

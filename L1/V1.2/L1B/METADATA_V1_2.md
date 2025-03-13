@@ -1,13 +1,13 @@
-# L1C product meta-data ([Home](README.md))
+# L1B product meta-data
 
-*JSON meta-data file describing the properties of the L1C product.*
+*JSON meta-data file describing the properties of the L1B product.*
 
 ## Properties
 
 - **`descriptor`** *(object)*: Meta-data relevant to the product (Spacecraft, sensor, date-range of the product).
   - **`generationDate`** *(string, format: date-time)*: The date on which the product was generated.
   - **`productId`** *(string)*: The ID identifying the product.
-  - **`productType`** *(string)*: This will always be 'L1C'.
+  - **`productType`** *(string)*: This will always be 'L1B'.
   - **`sceneCol`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the column index will reflect adjacent tiles across track starting counting at 1 for left-most scene. The interval will have at least one column, even it the interval is not subdivided.
   - **`sceneRow`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the row index will increment proportionally along track (starting at 1).  The interval will have at least one row, even it the interval is not subdivided.
   - **`sensors`** *(array)*: A list of sensor IDs relevant to the product (if required, with preference for hyphenated separators instead of spaces or underscores).
@@ -25,15 +25,16 @@
 - **`elevation`** *(object)*: Details relating to the elevation of the product.
   - **`averageHae`** *(number, format: double)*: The average height above ellipsoid in meters.
   - **`averageMsl`** *(number, format: double)*: The average mean sea level in meters.
+- **`navAtt`** *(string)*: The file name in which naviation and attitude data of the product can be found.
 - **`pixelCount`** *(integer, format: int64)*: The total number of pixels across all bands of the product.
+- **`scanTimes`** *(string)*: The file name in which all the scan-line scan-times of the product can be found.
 - **`sensors`** *(array)*: Details relating to the sensors relevant to the product.
   - **Items** *(object)*
     - **`descriptor`** *(object)*: Details relating to the imaging sensor (name, detector ID's, etc).
       - **`ancillaries`** *(object)*: Ancillary reference files used as calibration input during processing.
         - **`cpf`** *(string)*: The name of the general geometric calibration parameter file used during processing.
         - **`rpf`** *(string)*: The name of the radiometric calibration parameter file used during processing.
-      - **`ids`** *(array)*: The detector IDs associated with the sensor.
-        - **Items** *(string)*
+      - **`id`** *(string)*: The detector ID.
       - **`name`** *(string)*: The name or unique ID for the sensor.
     - **`images`** *(array)*: Details related to image that were generated that is associated with the sensor.
       - **Items** *(object)*
@@ -48,10 +49,9 @@
         - **`geometric`** *(object)*: Details relating to the geometric data of the image.
           - **`dimensions`** *(array)*: The pixel dimensions of the image (total rows and columns). Length must be equal to 2.
             - **Items** *(number)*
-          - **`geometry`** *(array)*: A multi-sequence of (x,y) coordinates forming a closed image outline (with units in the stated projection).
-            - **Items** *(array)*
-              - **Items** *(array)*: Length must be equal to 2.
-                - **Items** *(number)*
+          - **`geometry`** *(array)*: A sequence of (x,y) coordinates forming a closed image outline (with units in the stated projection).
+            - **Items** *(array)*: Length must be equal to 2.
+              - **Items** *(number)*
           - **`projection`** *(string)*: The projection string of the image (e.g., 'EPSG:32629').
           - **`quality`** *(object)*: The quality of the geometric corrections applied (e.g., the band-to-band alignment).
             - **`bandAlignment`** *(object)*: A listing of which bands were corrected to what quality level. Best results would require that all bands are precision aligned.
@@ -68,7 +68,7 @@
         - **`qaMask`** *(string)*: The name of the quality mask file of which this group refers to.
         - **`radiometric`** *(object)*: Details relating to the radiometric data of the image.
           - **`earthSunDistance`** *(number, format: double)*: The average distance between the center of the earth and the center of the sun in Astronomical Units (AU). Typical values are between 0.9832 and 1.0167.
-          - **`esun`** *(array)*: A list of extra-terrestrial solar irradiation (ESUN) values for each band.
+          - **`esun`** *(array)*: A list of mean exo-atmospheric solar irradiance (ESUN) values for each band.
             - **Items** *(object)*
               - **`band`** *(string)*: The name of the imaging band.
               - **`units`** *(string)*: Typically 'W / (m^2 * um)'.
@@ -79,17 +79,27 @@
               - **`centerWavelength`** *(number, format: double)*: The center band wavelength (in nanometers).
               - **`fullWidthHalfMax`** *(number, format: double)*: The full-width half-max bandwidth of the band in question (in nanometers).
           - **`units`** *(string)*: The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Refelectance x 10k' denoting x10,000 scaled top-of-atmostphere reflectance).
+        - **`rpc`** *(string)*: The rational polynomial coefficients (RPC) file used during processing.
     - **`quality`** *(object)*: Quality metrics generated during processing.
       - **`geometric`** *(object)*: Geometrics quality metrics generated during processing.
-        - **`metrics`** *(object)*: Quality metrics listed by detector ID.
+        - **`metrics`** *(array)*: A list of disparities by image corner and center location. Will only be available if the adjacent property 'orthorectification' is equal to 'precision'.
+          - **Items** *(object)*
+            - **`location`** *(string)*: The location in the image where the metrics are applicable to. The possible locations are: upper-left corner, lower-left corner, lower-right corner, upper-right corner, and scene center. Must be one of: `["UL", "LL", "LR", "UR", "CENTER"]`.
+            - **`precisionLocation`** *(array)*: The precision corrected coordinate in (longitude, lattitude). Length must be equal to 2.
+              - **Items** *(number)*
+            - **`rawLocation`** *(array)*: Raw location in (longitude, lattitude) prior to any corrections being applied. Length must be equal to 2.
+              - **Items** *(number)*
+            - **`rawToPrecisionDisparityMeter`** *(number, format: double)*: The difference in meters between the raw and precision coordinate locations.
+            - **`rawToSystematicDisparityMeter`** *(number, format: double)*: The difference in meters between the raw and systematic coordinate locations.
+            - **`systematicLocation`** *(array)*: The systematically corrected coordinate in (longitude, lattitude). Length must be equal to 2.
+              - **Items** *(number)*
+            - **`systematicToPrecisionDisparityMeter`** *(number, format: double)*: The difference in meters between the systematic and precision coordinate locations.
         - **`orthorectification`** *(string)*: To what model quality orthorectifcation was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'. Must be one of: `["systematic", "precision"]`.
-- **`software`** *(object)*: Details regarding the software used to generate the L1C product.
+- **`software`** *(object)*: Details regarding the software used to generate the L1B product.
   - **`name`** *(string)*
   - **`version`** *(string)*
-- **`spectralResponses`** *(string)*: The file name in which all the spectral responses for all bands can be found.
-- **`thumbnailImageType`** *(string)*: The image format of the generated thumbnails. Must be one of: `["GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS"]`.
 - **`thumbnails`** *(array)*: Thumbnails of different band or sensor combinations.
-  - **Items** *(object)*: Thumbnail details.
-    - **`image`** *(string)*: The file name of the thumbnail image.
-    - **`name`** *(string)*: The ID used to distinguish between different thumbnails.
-- **`viewingAngles`** *(string)*: The file name in which all the viewing of the product can be found.
+  - **Items** *(object)*
+    - **`image`** *(string)*: The file name of the thumbnail.
+    - **`name`** *(string)*: The name of the thumbnail (eg., 'RGB', 'FalseColor' or 'TrueColor').
+- **`viewingAngles`** *(string)*

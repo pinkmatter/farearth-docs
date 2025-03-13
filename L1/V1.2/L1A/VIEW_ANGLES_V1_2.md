@@ -1,4 +1,4 @@
-# Viewing angle file ([Home](README.md))
+# Viewing angle file
 
 *JSON meta-data file describing viewing angles associated with the product.*
 

@@ -304,7 +304,7 @@
                     },
                     "esun" : {
                       "title" : "ESUN values",
-                      "description" : "A list of extra-terrestrial solar irradiation (ESUN) values for each band.",
+                      "description" : "A list of mean exo-atmospheric solar irradiance (ESUN) values for each band.",
                       "type" : "array",
                       "items" : {
                         "type" : "object",

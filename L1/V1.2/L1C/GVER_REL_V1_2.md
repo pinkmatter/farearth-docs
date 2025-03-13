@@ -1,4 +1,4 @@
-# Relative geometric disparity metrics ([Home](README.md))
+# Relative geometric disparity metrics
 
 *Metrics describing the disparity between different bands of the image.*
 

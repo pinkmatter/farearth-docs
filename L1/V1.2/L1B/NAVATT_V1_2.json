@@ -1,0 +1,94 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "attitude" : {
+      "title" : "Attitude points",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "quaternion" : {
+            "type" : "array",
+            "minItems" : 4,
+            "maxItems" : 4,
+            "items" : {
+              "type" : "number"
+            },
+            "title" : "Quaternion",
+            "description" : "Attitude point expressed as a quaternion."
+          },
+          "timestamp" : {
+            "type" : "string",
+            "format" : "date-time",
+            "title" : "Timestamp",
+            "description" : "A (seconds, nanoseconds) representation of the timestamp."
+          }
+        }
+      }
+    },
+    "ephemeris" : {
+      "title" : "Ephemeris points",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "eciPos" : {
+            "type" : "array",
+            "minItems" : 3,
+            "maxItems" : 3,
+            "items" : {
+              "type" : "number"
+            },
+            "title" : "ECI position",
+            "description" : "The ECI postion 3D vector."
+          },
+          "eciVel" : {
+            "type" : "array",
+            "minItems" : 3,
+            "maxItems" : 3,
+            "items" : {
+              "type" : "number"
+            },
+            "title" : "ECI velocity",
+            "description" : "The ECI velocity 3D vector."
+          },
+          "ecrPos" : {
+            "type" : "array",
+            "minItems" : 3,
+            "maxItems" : 3,
+            "items" : {
+              "type" : "number"
+            },
+            "title" : "ECR position",
+            "description" : "The ECR postion 3D vector."
+          },
+          "ecrVel" : {
+            "type" : "array",
+            "minItems" : 3,
+            "maxItems" : 3,
+            "items" : {
+              "type" : "number"
+            },
+            "title" : "ECR velocity",
+            "description" : "The ECR velocity 3D vector."
+          },
+          "timestamp" : {
+            "type" : "string",
+            "format" : "date-time",
+            "title" : "Timestamp",
+            "description" : "A (seconds, nanoseconds) representation of the timestamp."
+          }
+        }
+      }
+    },
+    "inertialFrame" : {
+      "type" : "string",
+      "enum" : [ "J2000", "TOD", "ITRF", "GTOD", "MOD", "CIRF", "GCRF", "TIRF", "TEME", "ICRF" ],
+      "title" : "Reference frame",
+      "description" : "The reference frame in which the attitude points are expressed in."
+    }
+  },
+  "title" : "Navigation and attitude file",
+  "description" : "A set of measurements describing the available navigation and attitude points associated with the image."
+}

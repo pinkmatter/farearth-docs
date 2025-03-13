@@ -1,4 +1,4 @@
-# Absolute geometric disparity metrics ([Home](README.md))
+# Absolute geometric disparity metrics
 
 *Metrics describing the difference between the image when compared to a reference.*
 
