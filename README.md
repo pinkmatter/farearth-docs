@@ -12,7 +12,7 @@ Pinkmatter public JSON and XML schemas. Each version of the products published b
 
 ## Algorithm Theoretical Basis Documents
 
-| Document  | Latest Version | Link |
+| Document  | Version | Link |
 | ------------- | -------------- | ----- |
-| L1 Radiometric | 1.2 | [Index Page](L1/docs/) |
-| L1 Geometric | 1.2 | [Index Page](L1/docs/) |
+| L1 Radiometric | 1.2 | [Document](L1/V1.2/docs/FarEarth-Algorithm-Theory-Radiometry-V1.2.pdf) |
+| L1 Geometric | 1.2 | [Document](L1/V1.2/docs/FarEarth-Algorithm-Theory-Geometry-V1.2.pdf) |
