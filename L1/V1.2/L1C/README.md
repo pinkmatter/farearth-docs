@@ -4,7 +4,7 @@
 
 ## Data Format Control Book
 
-[L1C Data Format Control](../docs/FarEarth-L1C-Data-Format-Control-Book-V1_2.pdf)
+[L1C Data Format Control](../docs/FarEarth-L1C-Data-Format-Control-Book-V1.2.pdf)
 
 ## Schemas
 
