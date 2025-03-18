@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="https://schemas.farearth.space/products/l1c/meta-xml" xmlns:n1="https://schemas.farearth.space/products/l1c/meta-xml" xmlns:schemaLocation="https://github.com/pinkmatter/farearth-schemas/blob/main/products/l1c/l1c-meta-v1.0.0.xml" xmlns:tns="https://schemas.farearth.space/products/l1c/meta-xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <xs:element name="Level-1C_MetaData" type="tns:xmlL1CMetaData"/>
+
+  <xs:complexType name="xmlL1CMetaData">
+    <xs:sequence>
+      <xs:element name="General_Info" type="tns:xmlGeneralInfo" minOccurs="0"/>
+      <xs:element name="Geometric_Info" type="tns:xmlGeometricInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlGeneralInfo">
+    <xs:sequence>
+      <xs:element name="TILE_ID" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="DATASTRIP_ID" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="SENSING_TIME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PROCESSING_TIME" type="xs:string" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlGeometricInfo">
+    <xs:sequence>
+      <xs:element name="Tile_Geocoding" type="tns:xmlTileGeocoding" form="unqualified" minOccurs="0"/>
+      <xs:element name="Tile_Angles" type="tns:xmlTileAngles" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlTileGeocoding">
+    <xs:sequence>
+      <xs:element name="HORIZONTAL_CS_NAME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="HORIZONTAL_CS_CODE" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="Size" type="tns:xmlBandSize" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Geoposition" type="tns:xmlBandPosition" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlBandSize">
+    <xs:sequence>
+      <xs:element name="NROWS" type="xs:int" form="unqualified"/>
+      <xs:element name="NCOLS" type="xs:int" form="unqualified"/>
+    </xs:sequence>
+    <xs:attribute name="resolution" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlBandPosition">
+    <xs:sequence>
+      <xs:element name="ULX" type="xs:double" form="unqualified"/>
+      <xs:element name="ULY" type="xs:double" form="unqualified"/>
+      <xs:element name="XDIM" type="xs:double" form="unqualified"/>
+      <xs:element name="YDIM" type="xs:double" form="unqualified"/>
+    </xs:sequence>
+    <xs:attribute name="resolution" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlTileAngles">
+    <xs:sequence>
+      <xs:element name="Sun_Angles_Grid" type="tns:xmlSunAnglesGrid" form="unqualified" minOccurs="0"/>
+      <xs:element name="Mean_Sun_Angle" type="tns:xmlAngle" form="unqualified" minOccurs="0"/>
+      <xs:element name="Viewing_Incidence_Angles_Grids" type="tns:xmlViewingIncidenceAngleGrid" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Mean_Viewing_Incidence_Angle_List" type="tns:xmlMeanIncidenceAngleList" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSunAnglesGrid">
+    <xs:sequence>
+      <xs:element name="Zenith" type="tns:xmlSteppedGrid" form="unqualified" minOccurs="0"/>
+      <xs:element name="Azimuth" type="tns:xmlSteppedGrid" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSteppedGrid">
+    <xs:sequence>
+      <xs:element name="COL_STEP" type="tns:xmlUnitValue" form="unqualified" minOccurs="0"/>
+      <xs:element name="ROW_STEP" type="tns:xmlUnitValue" form="unqualified" minOccurs="0"/>
+      <xs:element name="Values_List" type="tns:xmlValueList" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlUnitValue">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlValueList">
+    <xs:sequence>
+      <xs:element name="VALUES" type="xs:string" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlAngle">
+    <xs:sequence>
+      <xs:element name="ZENITH_ANGLE" type="tns:xmlUnitValue" form="unqualified" minOccurs="0"/>
+      <xs:element name="AZIMUTH_ANGLE" type="tns:xmlUnitValue" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlViewingIncidenceAngleGrid">
+    <xs:sequence>
+      <xs:element name="Zenith" type="tns:xmlSteppedGrid" form="unqualified" minOccurs="0"/>
+      <xs:element name="Azimuth" type="tns:xmlSteppedGrid" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="bandId" type="xs:string"/>
+    <xs:attribute name="detectorId" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlMeanIncidenceAngleList">
+    <xs:sequence>
+      <xs:element name="Mean_Viewing_Incidence_Angle" type="tns:xmlBandedAngle" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlBandedAngle">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlAngle">
+        <xs:sequence/>
+        <xs:attribute name="bandId" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

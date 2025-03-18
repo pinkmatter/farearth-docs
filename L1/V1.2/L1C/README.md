@@ -11,6 +11,7 @@
 | File     | Schema      | Documentation      |
 | ------------- | ------------- | ------------- |
 | Main Metadata | [JSON Schema](METADATA_V1_2.json) | [Doc](METADATA_V1_2.md) |
+| Main Metadata | [XML Schema](METADATA_V1_2.xsd) | [Doc](METADATA_V1_2.md) |
 | Viewing Angle Metadata | [JSON Schema](VIEW_ANGLES_V1_2.json) | [Doc](VIEW_ANGLES_V1_2.md) |
 | Pointing Metadata | [JSON Schema](POINTING_V1_2.json) | [Doc](POINTING_V1_2.md) |
 | Geometric Verification (Absolute) | [JSON Schema](GVER_ABS_V1_2.json) | [Doc](GVER_ABS_V1_2.md) |
