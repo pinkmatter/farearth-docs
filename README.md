@@ -6,9 +6,9 @@ Pinkmatter public JSON and XML schemas. Each version of the products published b
 
 | Product Type  | Latest Version | Index |
 | ------------- | -------------- | ----- |
-| L1A | 1.2 | [Index Page](L1/L1A/V1.2/README.md) |
-| L1B | 1.2 | [Index Page](L1/L1B/V1.2/README.md) |
-| L1C | 1.2 | [Index Page](L1/L1C/V1.2/README.md) |
+| L1A | 1.2 | [Index Page](L1/V1.2/L1A/README.md) |
+| L1B | 1.2 | [Index Page](L1/V1.2/L1B/README.md) |
+| L1C | 1.2 | [Index Page](L1/V1.2/L1C/README.md) |
 
 ## Algorithm Theoretical Basis Documents
 
