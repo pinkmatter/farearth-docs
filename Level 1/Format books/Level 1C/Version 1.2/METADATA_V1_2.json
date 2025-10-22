@@ -2,6 +2,22 @@
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "type" : "object",
   "properties" : {
+    "bandMapping" : {
+      "type" : "object",
+      "title" : "Band mapping, name to index",
+      "description" : "A mapping of band ID to index."
+    },
+    "cloudCover" : {
+      "type" : "number",
+      "format" : "float",
+      "title" : "Cloud cover",
+      "description" : "The cloud cover percentage (0.0 to 100.0)."
+    },
+    "cloudsImage" : {
+      "type" : "string",
+      "title" : "Clouds file name",
+      "description" : "The file name of the cloud probability image."
+    },
     "descriptor" : {
       "type" : "object",
       "properties" : {
@@ -302,6 +318,30 @@
                       "title" : "Earth-sun distance",
                       "description" : "The average distance between the center of the earth and the center of the sun in Astronomical Units (AU). Typical values are between 0.9832 and 1.0167."
                     },
+                    "emissiveConstants" : {
+                      "title" : "Emissive constant values",
+                      "description" : "A list of emissive conversion constant values for for each band.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "constants" : {
+                            "title" : "Emissive constants",
+                            "description" : "The emissive constants are model parameters used for radiance to brightness temperature conversion.",
+                            "type" : "array",
+                            "items" : {
+                              "type" : "number",
+                              "format" : "double"
+                            }
+                          }
+                        }
+                      }
+                    },
                     "esun" : {
                       "title" : "ESUN values",
                       "description" : "A list of mean exo-atmospheric solar irradiance (ESUN) values for each band.",
@@ -324,6 +364,33 @@
                             "format" : "double",
                             "title" : "ESUN value",
                             "description" : "The ESUN value of the band in question."
+                          }
+                        }
+                      }
+                    },
+                    "radianceConversion" : {
+                      "title" : "Radiance conversion values",
+                      "description" : "A list of radiance conversion values for for each band.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "gain" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Band gain",
+                            "description" : "The gain of the imaging band."
+                          },
+                          "offset" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Band offset",
+                            "description" : "The offset of the imaging band."
                           }
                         }
                       }
@@ -358,7 +425,7 @@
                     "units" : {
                       "type" : "string",
                       "title" : "Pixel unit representation",
-                      "description" : "The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Refelectance x 10k' denoting x10,000 scaled top-of-atmostphere reflectance)."
+                      "description" : "The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Refelectance x 10k' denoting x10,000 scaled top-of-atmosphere reflectance, or 'TOA Brightness Temperature x 10 (K)' denoting x10 scaled top-of-atmosphere brightness temperature in Kelvin)."
                     }
                   },
                   "title" : "Radiometric image details",
