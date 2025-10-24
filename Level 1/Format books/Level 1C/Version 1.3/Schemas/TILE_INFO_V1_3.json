@@ -1,0 +1,74 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "Map(String,Object)" : {
+      "type" : "object"
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "cloudyPixelPercentage" : {
+      "type" : "number",
+      "format" : "double",
+      "title" : "Cloud pixel percentage",
+      "description" : "The percentage of the pixel data that is clouds."
+    },
+    "dataCoveragePercentage" : {
+      "type" : "number",
+      "format" : "double",
+      "title" : "Data coverage percentage",
+      "description" : "The percentage of the tile that is valid data."
+    },
+    "gridSquare" : {
+      "type" : "string",
+      "title" : "Grid square",
+      "description" : "The MGRS grid square coordinate."
+    },
+    "latitudeBand" : {
+      "type" : "string",
+      "title" : "Latitude band",
+      "description" : "The MGRS latitude band."
+    },
+    "path" : {
+      "type" : "string",
+      "title" : "Path",
+      "description" : "The path at which the tile is available."
+    },
+    "subSquare" : {
+      "type" : "string",
+      "title" : "Sub-square",
+      "description" : "The MGRS sub-square coordinate."
+    },
+    "tileDataGeometry" : {
+      "$ref" : "#/$defs/Map(String,Object)",
+      "title" : "Tile data geometry",
+      "description" : "The outline of the data contained within the tile."
+    },
+    "tileGeometry" : {
+      "$ref" : "#/$defs/Map(String,Object)",
+      "title" : "Tile geometry",
+      "description" : "The geometry associated with the outline of the tile."
+    },
+    "tileID" : {
+      "type" : "string",
+      "title" : "Tile ID",
+      "description" : "The ID of the tile."
+    },
+    "tileOrigin" : {
+      "$ref" : "#/$defs/Map(String,Object)",
+      "title" : "Tile origin",
+      "description" : "The original coordinate of the tile."
+    },
+    "timestamp" : {
+      "type" : "string",
+      "title" : "Timestamp",
+      "description" : "The ISO 8601 timestamp associated with the tile (typically the start of the data)."
+    },
+    "utmZone" : {
+      "type" : "integer",
+      "format" : "int32",
+      "title" : "UTM Zone",
+      "description" : "The UTM zone of the data."
+    }
+  }
+}

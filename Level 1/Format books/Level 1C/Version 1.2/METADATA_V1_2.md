@@ -1,3 +1,5 @@
+##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.2](../Version%201.2/) > [Format book](README.md) > Product metatdata
+
 # Level 1C product metadata
 
 ## Introduction
@@ -101,8 +103,8 @@ This table documents the `sensors` section.
 | **Property** | **Description**      |
 |--------------|----------------------|
 | `sunAzimuth` | Sun azimuth angle. From the scene centre point on the ground, this is the angle between true north and the sun. Measured clockwise in degrees (0° - 360°)     |
-| `sunElevation` | Sun elevation angle. The angle from the tangent of the scene centre point to the sun. Measured from the horizon in degrees <br>(-90° - 90°). Negative values indicate the sun is below the horizon, e.g. sun elevation of -10° means the data was captured during nautical twilight |
-| `viewOffNadir` | The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0°-90°). |
+| `sunElevation` | Sun elevation angle. The angle from the tangent of the scene centre point to the sun. Measured from the horizon in degrees (-90° - 90°). Negative values indicate the sun is below the horizon, e.g. sun elevation of -10° means the data was captured during nautical twilight |
+| `viewOffNadir` | The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0°-90°) |
 | `viewIncidence` | The incidence angle is the angle between the vertical (normal) to the intercepting surface and the line of sight back to the satellite at the scene center. Measured in degrees (0°-90°) |
 | `viewAzimuth` | Viewing azimuth angle. The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north. Measured clockwise from north in degrees (0°-360°) |
 
@@ -110,36 +112,36 @@ This table documents the `sensors` section.
 
 | **Property** | **Description**      |
 |--------------|----------------------|
-| `units`| This property specifies the units of the pixel data See Section 3 for details|
-| `esun`| The ESUN units and value that was used to process this band |
+| `units` | This property specifies the units of the pixel data See Section 3 for details |
+| `esun` | The ESUN units and value that was used to process this band |
 | `earthSunDistance` | The distance between the earth and the sun used to produce this L1C product in astronomical units |
-|`spectral`| Spectral properties. See [Spectral](#spectral) |
+| `spectral` | Spectral properties. See [Spectral](#spectral) |
 
 ### Geometric
 
 | **Property** | **Description**      |
 |--------------|----------------------|
-| `dimensions`          | A pair of numbers representing the number of pixels across track and along track respectively |
-| `resolution`|The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track GSD|
-|`geometry`| A polygon representing the footprint on the band on Earth. Coordinates are for the projection above 
-|`quality`| This property indicates whether a systematic or precision band alignment strategy was followed for the band. See the description for orthorectification below for details. See [Quality](#image-band-quality)|
-| `projection`| The geometric projection of this band onto the Earth. EPSG projections are used in the form “EPSG:XXXXX” |
+| `dimensions` | A pair of numbers representing the number of pixels across track and along track respectively |
+| `resolution` | The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track GSD |
+| `geometry` | A polygon representing the footprint on the band on Earth. Coordinates are for the projection above 
+| `quality` | This property indicates whether a systematic or precision band alignment strategy was followed for the band. See the description for orthorectification below for details. See [Quality](#image-band-quality) |
+| `projection` | The geometric projection of this band onto the Earth. EPSG projections are used in the form “EPSG:XXXXX” |
 
 ### Spectral
 
 | **Property** | **Description**      |
 |--------------|----------------------|
-|`band`|The name of the imaging band|
-|`centerWavelength `|The center band wavelength (in nanometers)|
-|`fullWidthHalfMax `|The full-width half-max bandwidth of the band in question (in nanometers)|
+| `band` | The name of the imaging band |
+| `centerWavelength ` | The center band wavelength (in nanometers) |
+| `fullWidthHalfMax ` | The full-width half-max bandwidth of the band in question (in nanometers) |
 
 ### Orthorectification quality
 
 This table documents the `quality` section under the `sensors` section.
-| **Property** | **Description**      |
+| **Property** | **Description** |
 |--------------|----------------------|
-| `orthorectification`| The orthorectification type is either **systematic** or **precision**. The orthorectification type of an image is precision if every band has an orthorectification type of precision. |
-| `metrics`| Metrics are listed in this property if the orthorectification type is precision. The metrics are identical to the metrics in the pointing files.|
+| `orthorectification` | The orthorectification type is either **systematic** or **precision**. The orthorectification type of an image is precision if every band has an orthorectification type of precision. |
+| `metrics` | Metrics are listed in this property if the orthorectification type is precision. The metrics are identical to the metrics in the pointing files. |
 
 **Systematic orthorectification**
 Systematic orthorectification uses calibration coefficients, NavAtt data, and rough reference data such as the mean height above ellipsoid for the image.
@@ -152,9 +154,9 @@ Precision orthorectification uses tiepoints and reference data to refine the geo
 This table documents the `quality` section under the `geometric` section.
 | **Property** | **Description**      |
 |--------------|----------------------|
-|`bandAlignment`|A listing of which bands were corrected to what quality level. Best results would require that all bands are precision aligned|
-|`precisionBands`|The names of the bands that were precision aligned against a reference orthorectfied image, or other ground control points|
-|`systematicBands`|The name of the bands that were systematically aligned as fallback when precision alignment failed or were disabled|
+| `bandAlignment` | A listing of which bands were corrected to what quality level. Best results would require that all bands are precision aligned |
+| `precisionBands` | The names of the bands that were precision aligned against a reference orthorectfied image, or other ground control points |
+| `systematicBands` | The name of the bands that were systematically aligned as fallback when precision alignment failed or were disabled |
 
 ### Elevation
 
@@ -162,8 +164,8 @@ The `elevation` section contains details relating to the elevation of the produc
 
 | **Property** | **Description**      |
 |--------------|----------------------|
-| `averageMsl`| The average meters above sea level of the area covered in the product |
-| `averageHae`| The average Height Above Ellipsoid of the area covered in the product |
+| `averageMsl` | The average meters above sea level of the area covered in the product |
+| `averageHae` | The average Height Above Ellipsoid of the area covered in the product |
 
 ### Software
 
@@ -176,7 +178,7 @@ The `software` section contains details related to the software used to generate
 
 ### Thumbnail image type
 
-The `thumbnailImageType` field the image format of the generated thumbnails. Must be one of: `["GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS"]` .
+The `thumbnailImageType` field the image format of the generated thumbnails. Must be one of: `["GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS"]`.
 
 ### Thumbnails
 
@@ -196,5 +198,5 @@ The geometry section defines the full footprint of the image. It is formatted ac
 This table documents the descriptor section of the sensor.
 | **Property** |**Description** |
 | ------ | ---|
-| `type`|The type of shape that is described in the `coordinates` property|
-|`coordinates`|A list of (x,y) coordinates forming a closed image outline (with units in the stated projection).|
+| `type` | The type of shape that is described in the `coordinates` property |
+| `coordinates` | A list of (x,y) coordinates forming a closed image outline (with units in the stated projection). |

@@ -1,0 +1,159 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "Angle" : {
+      "type" : "object",
+      "properties" : {
+        "columnStepSize" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Column step size",
+          "description" : "The number of unit steps included as a single column of which values are averaged in."
+        },
+        "columnStepUnit" : {
+          "type" : "string",
+          "title" : "Column step units",
+          "description" : "The column step unit (typically pixels or the map projection units)."
+        },
+        "rowStepSize" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Row step size",
+          "description" : "The number of unit steps included as a single row of which values are averaged in."
+        },
+        "rowStepUnit" : {
+          "type" : "string",
+          "title" : "Row step units",
+          "description" : "The row step unit (typically pixels or the map projection units)."
+        },
+        "values" : {
+          "title" : "Grid values",
+          "description" : "A matrix of row and column values representing the averaged values",
+          "type" : "array",
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number",
+              "format" : "double"
+            }
+          }
+        }
+      }
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "meanSunAngle" : {
+      "type" : "object",
+      "properties" : {
+        "azimuthAngle" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Azimuth angle",
+          "description" : "The azimuth angle measurement"
+        },
+        "azimuthAngleUnit" : {
+          "type" : "string",
+          "title" : "Azimuth angle unit",
+          "description" : "The unit of the azimuth measurement (typically degrees)"
+        },
+        "zenithAngle" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Zenith angle",
+          "description" : "The zenith angle measurement"
+        },
+        "zenithAngleUnit" : {
+          "type" : "string",
+          "title" : "Zenith angle unit",
+          "description" : "The unit of the zenith measurement (typically degrees)"
+        }
+      },
+      "title" : "Mean solar angles",
+      "description" : "Averaged solar angles"
+    },
+    "meanViewingIncidenceAngles" : {
+      "title" : "Mean viewing incidence angles",
+      "description" : "Averaged incidence angles listed by band ID",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "azimuthAngle" : {
+            "type" : "number",
+            "format" : "double",
+            "title" : "Azimuth angle",
+            "description" : "The azimuth angle measurement"
+          },
+          "azimuthAngleUnit" : {
+            "type" : "string",
+            "title" : "Azimuth angle unit",
+            "description" : "The unit of the azimuth measurement (typically degrees)"
+          },
+          "bandId" : {
+            "type" : "string",
+            "title" : "Band ID"
+          },
+          "zenithAngle" : {
+            "type" : "number",
+            "format" : "double",
+            "title" : "Zenith angle",
+            "description" : "The zenith angle measurement"
+          },
+          "zenithAngleUnit" : {
+            "type" : "string",
+            "title" : "Zenith angle unit",
+            "description" : "The unit of the zenith measurement (typically degrees)"
+          }
+        }
+      }
+    },
+    "sunAngles" : {
+      "type" : "object",
+      "properties" : {
+        "azimuth" : {
+          "$ref" : "#/$defs/Angle",
+          "title" : "Azimuth grid",
+          "description" : "Solar azimuth values where the scene is subdivided in a grid of averaged values"
+        },
+        "zenith" : {
+          "$ref" : "#/$defs/Angle",
+          "title" : "Zenith grid",
+          "description" : "Solar zenith values where the scene is subdivided in a grid of averaged values"
+        }
+      },
+      "title" : "Solar angles grid",
+      "description" : "Angle grid describing how the sun is pointing towards the product"
+    },
+    "viewingIncidenceAngles" : {
+      "title" : "Viewing incidence angles grid",
+      "description" : "Angle grid listing the incidence angles per band and detector ID",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "azimuth" : {
+            "$ref" : "#/$defs/Angle",
+            "title" : "Azimuth angle grid",
+            "description" : "An averaged grid of azimuth viewing incidence angles"
+          },
+          "bandId" : {
+            "type" : "string",
+            "title" : "Band ID"
+          },
+          "detectorId" : {
+            "type" : "string",
+            "title" : "Detector ID"
+          },
+          "zenith" : {
+            "$ref" : "#/$defs/Angle",
+            "title" : "Zenith angle grid",
+            "description" : "An averaged grid of zenith viewing incidence angles"
+          }
+        }
+      }
+    }
+  },
+  "title" : "Viewing angle file",
+  "description" : "JSON meta-data file describing viewing angles associated with the product."
+}

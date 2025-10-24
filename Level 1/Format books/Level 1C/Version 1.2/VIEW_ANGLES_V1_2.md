@@ -1,3 +1,5 @@
+##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.2](../Version%201.2/) > [Format book](README.md) > Viewing angles
+
 # Level 1C Viewing angle metadata file
 
 ## Introduction
@@ -54,4 +56,4 @@ This table documents the `sunAngles`  section.
 | `columnStepUnit` | The unit of measurement used by the `columnStepSize`  |
 | `rowStepSize` | The row size is how many rows map units are included in each block |
 | `rowStepUnit` | The unit of measurement used by the `rowStepSize` |
-| `values` | A square 2 dimensional array of values starting at the upper left.<br> For example values `[3][5]` is row 3, column 5.<br> `Nan` is used to indicate no data values |
+| `values` | A square 2 dimensional array of values starting at the upper left. For example values `[3][5]` is row 3, column 5. `Nan` is used to indicate no data values |

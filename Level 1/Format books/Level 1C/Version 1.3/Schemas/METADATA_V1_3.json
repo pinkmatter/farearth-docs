@@ -1,0 +1,615 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$defs" : {
+    "ValueDegrees" : {
+      "type" : "object",
+      "properties" : {
+        "units" : {
+          "type" : "string",
+          "title" : "Units",
+          "description" : "The SI unit the value is expressed in."
+        },
+        "value" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Value",
+          "description" : "The scalar value quantity."
+        }
+      }
+    },
+    "ValueMeters" : {
+      "type" : "object",
+      "properties" : {
+        "units" : {
+          "type" : "string",
+          "title" : "Units",
+          "description" : "The SI unit the value is expressed in."
+        },
+        "value" : {
+          "type" : "number",
+          "format" : "double",
+          "title" : "Value",
+          "description" : "The scalar value quantity."
+        }
+      }
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "ancestry" : {
+      "title" : "Ancestry",
+      "description" : "A list of references comprising the inputs used to create the product.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "string",
+            "title" : "Product ID",
+            "description" : "The unique product ID."
+          },
+          "productType" : {
+            "type" : "string",
+            "title" : "Product type",
+            "description" : "The type or level of the product (e.g., RAW, DEM, L1A, L1C or L2A)."
+          },
+          "references" : {
+            "title" : "References",
+            "description" : "A list of references which was used to generate the product.",
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "productId" : {
+                  "type" : "string",
+                  "title" : "Product ID",
+                  "description" : "The product ID uniquely identifying the reference."
+                },
+                "productType" : {
+                  "type" : "string",
+                  "title" : "Product type",
+                  "description" : "The product type of the reference."
+                },
+                "properties" : {
+                  "type" : "object",
+                  "title" : "Product properties",
+                  "description" : "Any additional optional properties that serves to describe the reference product."
+                }
+              }
+            }
+          },
+          "software" : {
+            "type" : "object",
+            "properties" : {
+              "buildDate" : {
+                "type" : "string",
+                "title" : "Build date",
+                "description" : "An ISO date timestamp describing when the software package was built."
+              },
+              "name" : {
+                "type" : "string",
+                "title" : "Name",
+                "description" : "The name or ID of the software package."
+              },
+              "revision" : {
+                "type" : "string",
+                "title" : "Revision",
+                "description" : "A revision hash that further serves as identifying the exact software package version."
+              },
+              "version" : {
+                "type" : "string",
+                "title" : "Version",
+                "description" : "A version uniquely identifying the software package."
+              }
+            },
+            "title" : "Software version",
+            "description" : "Details relating to the software responsible for generating the product."
+          }
+        }
+      }
+    },
+    "bandMapping" : {
+      "type" : "object",
+      "title" : "Band mapping, name to index",
+      "description" : "A mapping of band ID to index."
+    },
+    "cloudCover" : {
+      "type" : "number",
+      "format" : "float",
+      "title" : "Cloud cover",
+      "description" : "The cloud cover percentage (0.0 to 100.0)."
+    },
+    "cloudsImage" : {
+      "type" : "string",
+      "title" : "Clouds file name",
+      "description" : "The file name of the cloud probability image."
+    },
+    "descriptor" : {
+      "type" : "object",
+      "properties" : {
+        "processedDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "title" : "Processed date",
+          "description" : "The date on which the product was generated."
+        },
+        "productId" : {
+          "type" : "string",
+          "title" : "Product ID",
+          "description" : "The ID identifying the product."
+        },
+        "productType" : {
+          "type" : "string",
+          "title" : "Product type",
+          "description" : "This will always be 'L1C'."
+        },
+        "sceneCol" : {
+          "type" : "integer",
+          "format" : "int32",
+          "title" : "Scene column index",
+          "description" : "If an interval is subdivided into multiple scenes (or tiles), the column index will reflect adjacent tiles across track starting counting at 1 for left-most scene. The interval will have at least one column, even it the interval is not subdivided."
+        },
+        "sceneRow" : {
+          "type" : "integer",
+          "format" : "int32",
+          "title" : "Scene row index",
+          "description" : "If an interval is subdivided into multiple scenes (or tiles), the row index will increment proportionally along track (starting at 1). The interval will have at least one row, even it the interval is not subdivided."
+        },
+        "sensors" : {
+          "title" : "Sensors",
+          "description" : "A list of sensor IDs relevant to the product (if required, with preference for hyphenated separators instead of spaces or underscores).",
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "spacecraft" : {
+          "type" : "string",
+          "title" : "Spacecraft ID",
+          "description" : "The ID of the spacecraft (if required, with preference for hyphenated separators instead of spaces or underscores, e.g., 'LANDSAT-7')."
+        },
+        "temporalRange" : {
+          "type" : "object",
+          "properties" : {
+            "from" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "number"
+              } ]
+            },
+            "to" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "number"
+              } ]
+            }
+          },
+          "title" : "Time range",
+          "description" : "The UTC start and end date of the product (with leap-seconds included)"
+        }
+      },
+      "title" : "Product descriptor",
+      "description" : "Meta-data relevant to the product (Spacecraft, sensor, date-range of the product)."
+    },
+    "elevation" : {
+      "type" : "object",
+      "properties" : {
+        "averageHae" : {
+          "$ref" : "#/$defs/ValueMeters",
+          "title" : "Average HAE",
+          "description" : "The average height above ellipsoid in meters."
+        },
+        "averageMsl" : {
+          "$ref" : "#/$defs/ValueMeters",
+          "title" : "Average MSL",
+          "description" : "The average mean sea level in meters."
+        }
+      },
+      "title" : "Product elevation details",
+      "description" : "Details relating to the elevation of the product."
+    },
+    "pixelCount" : {
+      "type" : "integer",
+      "format" : "int64",
+      "title" : "Pixel count",
+      "description" : "The total number of pixels across all bands of the product."
+    },
+    "sensors" : {
+      "title" : "Sensor listing",
+      "description" : "Details relating to the sensors relevant to the product.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "descriptor" : {
+            "type" : "object",
+            "properties" : {
+              "ancillaries" : {
+                "type" : "object",
+                "properties" : {
+                  "cpf" : {
+                    "type" : "string",
+                    "title" : "CPF file name",
+                    "description" : "The name of the general geometric calibration parameter file used during processing."
+                  },
+                  "rpf" : {
+                    "type" : "string",
+                    "title" : "RPF file name",
+                    "description" : "The name of the radiometric calibration parameter file used during processing."
+                  }
+                },
+                "title" : "Sensor-specific ancillaries",
+                "description" : "Ancillary reference files used as calibration input during processing."
+              },
+              "ids" : {
+                "title" : "Detector IDs",
+                "description" : "The detector IDs associated with the sensor.",
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "name" : {
+                "type" : "string",
+                "title" : "Sensor ID",
+                "description" : "The name or unique ID for the sensor."
+              }
+            },
+            "title" : "Sensor details",
+            "description" : "Details relating to the imaging sensor (name, detector ID's, etc)."
+          },
+          "images" : {
+            "title" : "Sensor images",
+            "description" : "Details related to image that were generated that is associated with the sensor.",
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "angles" : {
+                  "type" : "object",
+                  "properties" : {
+                    "sunAzimuth" : {
+                      "$ref" : "#/$defs/ValueDegrees",
+                      "title" : "Solar azimuth",
+                      "description" : "From the scene center point on the ground, this is the angle between truth north and the sun (measured clockwise in degrees between 0 and 360)."
+                    },
+                    "sunElevation" : {
+                      "$ref" : "#/$defs/ValueDegrees",
+                      "title" : "Solar elevation",
+                      "description" : "The angle from the tangent of the scene center point to the sun. Measured from the horizon in degrees (-90 to 90). Negative values indicate the sun is below the horizon, e.g. sun elevation of -10 means the data was captured during nautical twilight."
+                    },
+                    "viewAzimuth" : {
+                      "$ref" : "#/$defs/ValueDegrees",
+                      "title" : "Azimuth viewing angle",
+                      "description" : "The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north (Measured clockwise from north in degrees between 0 and 360)."
+                    },
+                    "viewIncidence" : {
+                      "$ref" : "#/$defs/ValueDegrees",
+                      "title" : "Incidence viewing angle",
+                      "description" : "The angle between the vertical (normal) to the intercepting surface and the line of sight back to the satellite at the scene center (in degrees, between 0 and 90)."
+                    },
+                    "viewOffNadir" : {
+                      "$ref" : "#/$defs/ValueDegrees",
+                      "title" : "Off-nadir viewing angle",
+                      "description" : "The angle from the sensor between nadir and the scene center (in degrees, between 0 and 90)."
+                    }
+                  },
+                  "title" : "View angles",
+                  "description" : "Solar and view angles relevant to the image."
+                },
+                "bands" : {
+                  "title" : "Band names",
+                  "description" : "The names of the bands available in this group. Non-unique names that matches the band IDs. Examples could include PAN, RED, GREEN, SWIR1, TIR1.",
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "geometric" : {
+                  "type" : "object",
+                  "properties" : {
+                    "geometry" : {
+                      "title" : "Image geometry",
+                      "description" : "A multi-sequence of (x,y) coordinates forming a closed image outline (with units in the stated projection).",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "array",
+                          "minItems" : 2,
+                          "maxItems" : 2,
+                          "items" : {
+                            "type" : "number"
+                          }
+                        }
+                      }
+                    },
+                    "imageDimensions" : {
+                      "type" : "array",
+                      "minItems" : 2,
+                      "maxItems" : 2,
+                      "items" : {
+                        "type" : "number"
+                      },
+                      "title" : "Image dimensions",
+                      "description" : "The pixel dimensions of the image (total rows and columns)."
+                    },
+                    "projection" : {
+                      "type" : "string",
+                      "title" : "Image projection",
+                      "description" : "The projection string of the image (e.g., 'EPSG:32629')."
+                    },
+                    "quality" : {
+                      "type" : "object",
+                      "properties" : {
+                        "bandAlignment" : {
+                          "type" : "object",
+                          "properties" : {
+                            "precisionBands" : {
+                              "title" : "Precision refined bands",
+                              "description" : "The names of the bands that were precision aligned against a reference ortho image, or other ground control points.",
+                              "type" : "array",
+                              "items" : {
+                                "type" : "string"
+                              }
+                            },
+                            "systematicBands" : {
+                              "title" : "Systematically corrected bands",
+                              "description" : "The name of the bands that were systematically aligned as fallback when precision alignment failed or were disabled.",
+                              "type" : "array",
+                              "items" : {
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "title" : "Geometric band-alignment quality",
+                          "description" : "A listing of which bands were corrected to what quality level. Best results would require that all bands are precision aligned."
+                        }
+                      },
+                      "title" : "Geometric correction quality",
+                      "description" : "The quality of the geometric corrections applied (e.g., the band-to-band alignment)."
+                    },
+                    "spatialResolution" : {
+                      "type" : "array",
+                      "minItems" : 2,
+                      "maxItems" : 2,
+                      "items" : {
+                        "type" : "number"
+                      },
+                      "title" : "Spatial image resolution",
+                      "description" : "The spatial resolution for any pixel in the image (as meters)."
+                    }
+                  },
+                  "title" : "Geometric image details",
+                  "description" : "Details relating to the geometric data of the image."
+                },
+                "group" : {
+                  "type" : "string",
+                  "title" : "Group ID",
+                  "description" : "The ID used to group different bands or their respective detector IDs together. Typically grouped together in the same image file by matching GSD resolutions. Examples include 'MS', 'RGB', 'VNIR' or 'VIS'."
+                },
+                "ids" : {
+                  "title" : "Band IDs",
+                  "description" : "The IDs of the bands available in this group. If multiple sensor assemblies are published separately, these ID's will be unique to allow differentiation between bands available on different sensors. Examples include 'SCA1_PAN', 'SCA1_RED', where another group could be 'SCA2_PAN', 'SCA2_RED'.",
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "image" : {
+                  "type" : "string",
+                  "title" : "Image data file name",
+                  "description" : "The name of the file of which this group refers to."
+                },
+                "qaMask" : {
+                  "type" : "string",
+                  "title" : "Quality mask file name",
+                  "description" : "The name of the quality mask file of which this group refers to."
+                },
+                "radiometric" : {
+                  "type" : "object",
+                  "properties" : {
+                    "earthSunDistance" : {
+                      "type" : "number",
+                      "format" : "double",
+                      "title" : "Earth-sun distance",
+                      "description" : "The average distance between the center of the earth and the center of the sun in Astronomical Units (AU). Typical values are between 0.9832 and 1.0167."
+                    },
+                    "emissiveConstants" : {
+                      "title" : "Emissive constant values",
+                      "description" : "A list of emissive conversion constant values for for each band. Emissive constants will vary only for emissive bands, with unity constants for reflective bands. Will be omitted if empty.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "constants" : {
+                            "title" : "Emissive constants",
+                            "description" : "The emissive constants are model parameters used for radiance to brightness temperature conversion.",
+                            "type" : "array",
+                            "items" : {
+                              "type" : "number",
+                              "format" : "double"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "esun" : {
+                      "title" : "ESUN values",
+                      "description" : "A list of mean exo-atmospheric solar irradiance (ESUN) values for each band. ESUN values will only be available for reflective bands. Will be omitted if empty.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "units" : {
+                            "type" : "string",
+                            "title" : "The units of the ESUN measurement",
+                            "description" : "Typically 'W / (m^2 * um)'."
+                          },
+                          "value" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "ESUN value",
+                            "description" : "The ESUN value of the band in question."
+                          }
+                        }
+                      }
+                    },
+                    "pixelUnits" : {
+                      "type" : "string",
+                      "title" : "Pixel unit representation",
+                      "description" : "The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Reflectance x 10k' denoting x10,000 scaled top-of-atmostphere reflectance, or 'TOA Brightness Temperature x 10 (K)' denoting x10 scaled top-of-atmosphere brightness temperature in Kelvin)."
+                    },
+                    "radianceConversion" : {
+                      "title" : "Radiance conversion values",
+                      "description" : "A list of radiance conversion values for for each band. The conversion values are only applicable to reflective bands. Will be omitted if empty.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "gain" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Band gain",
+                            "description" : "The gain of the imaging band."
+                          },
+                          "offset" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Band offset",
+                            "description" : "The offset of the imaging band."
+                          }
+                        }
+                      }
+                    },
+                    "spectral" : {
+                      "title" : "Band spectra",
+                      "description" : "The spectral band layout of the sensor.",
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "band" : {
+                            "type" : "string",
+                            "title" : "Band name",
+                            "description" : "The name of the imaging band."
+                          },
+                          "centerWavelength" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Central wavelength",
+                            "description" : "The center band wavelength (in nanometers)."
+                          },
+                          "fullWidthHalfMax" : {
+                            "type" : "number",
+                            "format" : "double",
+                            "title" : "Bandwidth",
+                            "description" : "The full-width half-max bandwidth of the band in question (in nanometers)."
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "title" : "Radiometric image details",
+                  "description" : "Details relating to the radiometric data of the image."
+                }
+              }
+            }
+          },
+          "quality" : {
+            "type" : "object",
+            "properties" : {
+              "geometric" : {
+                "type" : "object",
+                "properties" : {
+                  "orthorectification" : {
+                    "type" : "string",
+                    "enum" : [ "systematic", "precision" ],
+                    "title" : "Orthorectification quality",
+                    "description" : "To what model quality orthorectification was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'."
+                  }
+                },
+                "title" : "Geometric quality correction metrics",
+                "description" : "Geometrics quality metrics generated during processing."
+              }
+            },
+            "title" : "Sensor correction quality metrics",
+            "description" : "Quality metrics generated during processing."
+          }
+        }
+      }
+    },
+    "software" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "title" : "Processing package name"
+        },
+        "version" : {
+          "type" : "string",
+          "title" : "Processing package version"
+        }
+      },
+      "title" : "Processing software details",
+      "description" : "Details regarding the software used to generate the L1C product."
+    },
+    "spectralResponses" : {
+      "type" : "string",
+      "title" : "Spectral response file name",
+      "description" : "The file name in which all the spectral responses for all bands can be found."
+    },
+    "thumbnailImageType" : {
+      "type" : "string",
+      "enum" : [ "GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS" ],
+      "title" : "Thumbnail image format",
+      "description" : "The image format of the generated thumbnails."
+    },
+    "thumbnails" : {
+      "title" : "L1C product thumbnails",
+      "description" : "Thumbnails of different band or sensor combinations.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "image" : {
+            "type" : "string",
+            "title" : "Image file name",
+            "description" : "The file name of the thumbnail image"
+          },
+          "name" : {
+            "type" : "string",
+            "title" : "The thumbnail name or ID",
+            "description" : "The ID used to distinguish between different thumbnails"
+          }
+        },
+        "title" : "L1C Thumbnail",
+        "description" : "Thumbnail details"
+      }
+    },
+    "viewingAngles" : {
+      "type" : "string",
+      "title" : "Viewing angles file name",
+      "description" : "The file name in which all the viewing of the product can be found."
+    }
+  },
+  "title" : "L1C product meta-data",
+  "description" : "JSON meta-data file describing the properties of the L1C product."
+}

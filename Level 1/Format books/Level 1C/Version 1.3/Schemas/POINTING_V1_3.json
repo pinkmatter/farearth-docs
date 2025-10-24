@@ -1,0 +1,96 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "type" : "object",
+  "properties" : {
+    "measurements" : {
+      "title" : "Measurements",
+      "description" : "Listed by different sensors.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "orthorectification" : {
+            "type" : "string",
+            "enum" : [ "systematic", "precision" ],
+            "title" : "Orthorectification quality",
+            "description" : "To what model quality orthorectification was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'."
+          },
+          "points" : {
+            "title" : "L1C geometric pointing metrics",
+            "description" : "Metrics describing how the image location was adjusted from raw to processed, listed by sensor ID.",
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "location" : {
+                  "type" : "string",
+                  "enum" : [ "UL", "LL", "LR", "UR", "CENTER" ],
+                  "title" : "Image coordinate location",
+                  "description" : "The location in the image where the metrics are applicable to. The possible locations are: upper-left corner, lower-left corner, lower-right corner, upper-right corner, and scene center."
+                },
+                "precisionLocation" : {
+                  "type" : "array",
+                  "minItems" : 2,
+                  "maxItems" : 2,
+                  "items" : {
+                    "type" : "number"
+                  },
+                  "title" : "Precision corrected coordinate",
+                  "description" : "The precision corrected coordinate in (longitude, latitude)."
+                },
+                "rawLocation" : {
+                  "type" : "array",
+                  "minItems" : 2,
+                  "maxItems" : 2,
+                  "items" : {
+                    "type" : "number"
+                  },
+                  "title" : "Raw coordinate",
+                  "description" : "Raw location in (longitude, latitude) prior to any corrections being applied."
+                },
+                "rawToPrecisionDisparityMeter" : {
+                  "type" : "number",
+                  "format" : "double",
+                  "title" : "Raw to precision coordinate difference",
+                  "description" : "The difference in meters between the raw and precision coordinate locations."
+                },
+                "rawToSystematicDisparityMeter" : {
+                  "type" : "number",
+                  "format" : "double",
+                  "title" : "Raw to systematic coordinate difference",
+                  "description" : "The difference in meters between the raw and systematic coordinate locations."
+                },
+                "systematicLocation" : {
+                  "type" : "array",
+                  "minItems" : 2,
+                  "maxItems" : 2,
+                  "items" : {
+                    "type" : "number"
+                  },
+                  "title" : "Systematically corrected coordinate",
+                  "description" : "The systematically corrected coordinate in (longitude, latitude)."
+                },
+                "systematicToPrecisionDisparityMeter" : {
+                  "type" : "number",
+                  "format" : "double",
+                  "title" : "Systematic to precision coordinate difference",
+                  "description" : "The difference in meters between the systematic and precision coordinate locations."
+                }
+              }
+            }
+          },
+          "sensorId" : {
+            "type" : "string",
+            "title" : "Sensor ID"
+          },
+          "sensorName" : {
+            "type" : "string",
+            "title" : "Sensor name"
+          }
+        }
+      }
+    }
+  },
+  "title" : "L1C geometric pointing metrics",
+  "description" : "Metrics describing how the image location was adjusted from raw to processed."
+}

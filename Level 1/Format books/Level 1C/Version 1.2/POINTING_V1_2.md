@@ -1,3 +1,5 @@
+##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.2](../Version%201.2/) > [Format book](README.md) > Geometric pointing
+
 # Level 1C geometric pointing metrics
 
 ## Introduction
@@ -14,7 +16,7 @@ The raw to precision and systematic to precision disparities are expected to deg
 **Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.2/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json)
 
 ## Properties
-|**Property**|**Meaning**|
+|**Property**|**Description**|
 |---|---|
 |`location`|A short string indicating the pixel being measured, UL means Upper Left, LR means Lower Right and CENTER means the center of the image|
 |`rawLocation`|Latitude and longitude of the pixel as reported by the satellite. No rotations or corrections have been applied|

@@ -79,8 +79,8 @@ The scale of the pixel values is given in the radiometric section of the metadat
 ### Data format and units
 The following Level 1C product data options are available and are dependent on the workflow and satellite.
 
-| Role                                           | Asset description                                                                                                                                                                                                        |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Role                                           | Asset description                                             |
+| ---------------------------------------------- | --------------------------------------------------- |
 | digital numbers                                | Pixel values in digital numbers as acquired by the sensor. Values have not been scaled to any units                                                                                                                      |
 | radiance                                       | Pixel values in radiance. Images in radiance have absolute radiometric calibration applied to their digital numbers. The value of each pixel is in units of watts per square meter per steradian, in $\frac{W}{m\\^2sr}$ |
 | Top of Atmosphere Reflectance ($\times 10,000$) | The value of the pixels is the ratio of radiation reflected to the incident solar radiation, that is measured by a sensor above the atmosphere multiplied by $10\\^4$. The Values are unitless.                          |
@@ -111,8 +111,8 @@ Two types of containing angle data are provided in the viewing angle image folde
 
 #### Solar angle
 A single solar angle file is provided. The extent of this image may exceed the dimensions of the processed image. Data is encoded in the following bands:
-| Band                  | Meaning                                                                          |
-| --------------------- | -------------------------------------------------------------------------------- |
+| Band                  | Description               |
+| --------------------- | ------------------------------ |
 | Band 1: Solar zenith  | Solar zenith values where the scene is subdivided in a grid of averaged values.  |
 | Band 2: Solar azimuth | Solar azimuth values where the scene is subdivided in a grid of averaged values. |
 
@@ -120,8 +120,8 @@ A single solar angle file is provided. The extent of this image may exceed the d
 
 #### View angle
 A view angle file is provided for each band that is processed. Data is encoded in the following bands:
-| Band                           | Meaning                                                                                                                                                                                                                          |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Band                           | Description        |
+| ------------------------------ | ------------------- |
 | Band 1: View incidence zenith  | The angle between the vertical (normal) to the intercepting surface at the centre point of the image or block and the line of sight back to the satellite. Measured in degrees ($0°-90°$). |
 | Band 2: View incidence azimuth | The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north. Measured clockwise from north in degrees ($0°- 360°$).                                         |
 
@@ -164,12 +164,11 @@ A Level 1C product has one _quality assessment_ file per band listed in the _met
 
  A _quality assessment_ file is an image file containing the quality assessment mask for the band. Each pixel in the mask indicates the quality of the corresponding pixel in the band data. The mask is therefore in the same map projection as the band data. The possible pixel values of the mask are listed in Table 13.
 
-| Value | Meaning                                                                                                                                                          |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0     | No special information regarding this pixel                                                                                                                      |
-| 1     | The pixel is undersaturated. The value of the pixel is below the minimum threshold of what the sensor is capable of measuring, therefore this pixel is uncertain |
-| 2     | The pixel is oversaturated. The value of the pixel is above the maximum threshold of what the sensor is capable of measuring, therefore this pixel is uncertain  |
-
+| Value | Description                 |
+| ----- | ---------------------- |
+| 0     | No special information regarding this pixel               |
+| 1     | The pixel is under saturated. The value of the pixel is below the minimum threshold of what the sensor is capable of measuring, therefore this pixel is uncertain |
+| 2     | The pixel is over saturated. The value of the pixel is above the maximum threshold of what the sensor is capable of measuring, therefore this pixel is uncertain  |
 
 ## Metadata files
 

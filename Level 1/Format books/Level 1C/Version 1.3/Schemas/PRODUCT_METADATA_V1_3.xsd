@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="https://schemas.farearth.space/products/l1c/product-meta-xml" xmlns:n1="https://schemas.farearth.space/products/l1c/product-meta-xml" xmlns:schemaLocation="https://raw.githubusercontent.com/pinkmatter/farearth-docs/refs/heads/main/Level%201/Format%20books/Level%201C/Version%201.3/PRODUCT_METADATA_V1_3.xsd" xmlns:tns="https://schemas.farearth.space/products/l1c/product-meta-xml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <xs:element name="Level-1C_ProductMetaData" type="tns:xmlL1CProductMetaData"/>
+
+  <xs:complexType name="xmlL1CProductMetaData">
+    <xs:sequence>
+      <xs:element name="General_Info" type="tns:xmlGeneralInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlGeneralInfo">
+    <xs:sequence>
+      <xs:element name="Product_Info" type="tns:xmlProductInfo" form="unqualified" minOccurs="0"/>
+      <xs:element name="Product_Image_Characteristics" type="tns:xmlProductImageCharacteristics" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlProductInfo">
+    <xs:sequence>
+      <xs:element name="PRODUCT_START_TIME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PRODUCT_STOP_TIME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PRODUCT_URI" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PROCESSING_LEVEL" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PRODUCT_TYPE" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PROCESSING_BASELINE" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="GENERATION_TIME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PREVIEW_IMAGE_URL" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="PREVIEW_GEO_INFO" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="Datatake" type="tns:xmlDatatake" form="unqualified" minOccurs="0"/>
+      <xs:element name="Product_Organisation" type="tns:xmlProductOrganization" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlDatatake">
+    <xs:sequence>
+      <xs:element name="SPACECRAFT_NAME" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="DATATAKE_SENSING_START" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="SENSING_ORBIT_NUMBER" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="SENSING_ORBIT_DIRECTION" type="xs:string" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="datatakeIdentifier" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlProductOrganization">
+    <xs:sequence>
+      <xs:element name="Tiles_List" type="tns:xmlTileList" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlTileList">
+    <xs:sequence>
+      <xs:element name="Tile" type="tns:xmlTile" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlTile">
+    <xs:sequence>
+      <xs:element name="IMAGE_FILE" type="xs:string" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="datastripIdentifier" type="xs:string"/>
+    <xs:attribute name="imageFormat" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlProductImageCharacteristics">
+    <xs:sequence>
+      <xs:element name="Special_Values" type="tns:xmlSpecialValue" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Image_Display_Order" type="tns:xmlImageDisplayOrder" form="unqualified" minOccurs="0"/>
+      <xs:element name="QUANTIFICATION_VALUE" type="tns:xmlQuantificationValue" form="unqualified" minOccurs="0"/>
+      <xs:element name="Radiometric_Offset_List" type="tns:xmlRadiometricOffsetList" form="unqualified" minOccurs="0"/>
+      <xs:element name="Reflectance_Conversion" type="tns:xmlReflectanceConversion" form="unqualified" minOccurs="0"/>
+      <xs:element name="Spectral_Information_List" type="tns:xmlSpectralInformationList" form="unqualified" minOccurs="0"/>
+      <xs:element name="PHYSICAL_GAINS" type="tns:xmlPhysicalGain" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="REFERENCE_BAND" type="xs:string" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSpecialValue">
+    <xs:sequence>
+      <xs:element name="SPECIAL_VALUE_TEXT" type="xs:string" form="unqualified" minOccurs="0"/>
+      <xs:element name="SPECIAL_VALUE_INDEX" type="xs:int" form="unqualified"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlImageDisplayOrder">
+    <xs:sequence>
+      <xs:element name="RED_CHANNEL" type="xs:int" form="unqualified"/>
+      <xs:element name="GREEN_CHANNEL" type="xs:int" form="unqualified"/>
+      <xs:element name="BLUE_CHANNEL" type="xs:int" form="unqualified"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlQuantificationValue">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlRadiometricOffsetList">
+    <xs:sequence>
+      <xs:element name="RADIO_ADD_OFFSET" type="tns:xmlRadioAddOffset" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlRadioAddOffset">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="band_id" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlReflectanceConversion">
+    <xs:sequence>
+      <xs:element name="U" type="xs:double" form="unqualified"/>
+      <xs:element name="Solar_Irradiance_List" type="tns:xmlSolarIrradianceList" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSolarIrradianceList">
+    <xs:sequence>
+      <xs:element name="SOLAR_IRRADIANCE" type="tns:xmlSolarIrradianceValue" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSolarIrradianceValue">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="bandId" type="xs:string"/>
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSpectralInformationList">
+    <xs:sequence>
+      <xs:element name="Spectral_Information" type="tns:xmlSpectralInformation" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSpectralInformation">
+    <xs:sequence>
+      <xs:element name="RESOLUTION" type="xs:double" form="unqualified"/>
+      <xs:element name="Wavelength" type="tns:xmlWavelength" form="unqualified" minOccurs="0"/>
+      <xs:element name="Spectral_Response" type="tns:xmlSpectralResponse" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="bandId" type="xs:string"/>
+    <xs:attribute name="physicalBand" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="xmlWavelength">
+    <xs:sequence>
+      <xs:element name="MIN" type="tns:xmlUnitValued" form="unqualified" minOccurs="0"/>
+      <xs:element name="MAX" type="tns:xmlUnitValued" form="unqualified" minOccurs="0"/>
+      <xs:element name="CENTRAL" type="tns:xmlUnitValued" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlUnitValued">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlSpectralResponse">
+    <xs:sequence>
+      <xs:element name="STEP" type="tns:xmlStep" form="unqualified" minOccurs="0"/>
+      <xs:element name="VALUES" type="xs:string" form="unqualified" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="xmlStep">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="unit" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="xmlPhysicalGain">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="bandId" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
+
