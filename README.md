@@ -2,6 +2,10 @@
 
 This page lists the [Format](#format-books) and [Theory](#theory-books) books used by FarEarth. The Format books describe the product formats. The Theory books describe the algorithms used to create the products.
 
+## How-to guides
+
+Refer to the [How-to guides](How-to%20guides/README.md) for a list of useful guides on how to configure and use *FarEarth*.
+
 ## Format books
 
 From the table below, select the version of the Format book for a specific product type.
