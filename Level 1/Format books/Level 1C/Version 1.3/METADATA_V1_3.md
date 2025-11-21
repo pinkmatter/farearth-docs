@@ -54,6 +54,17 @@ This table details certain properties of the `sensors` section.
 |--------------|----------------------|
 | `qaMask`| Reference to the image file containing the quality assessment mask for this band image. The pixel values and bit representations are provided : 0 (000) is a normal pixel, 1 (001) is under saturated, 2 (010) is over saturated, 5 (101) is  under saturated and filled and 6 (110) is over saturated and filled. |
 
+### Image Geometry
+
+This table details certain properties of the `geometric` section under the `images` section.
+| Property | Description      |
+|--------------|----------------------|
+| `quality` | This property indicates whether a systematic or precision band alignment strategy was followed for the band. See [Orthorectification quality](#orthorectification-quality) below for details |
+| `projection` | The geometric projection of this band onto the Earth. EPSG projections are used in the form “EPSG:XXXXX” |
+| `imageDimensions` | A pair of numbers representing the number of pixels across track and along track respectively |
+| `spatialResolution` | The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track GSD |
+| `geometry` | A polygon representing the footprint on the band on Earth. Coordinates are for the projection above |
+
 ### Angles
 
 This table details certain properties of the `angles` section.
@@ -65,17 +76,6 @@ This table details certain properties of the `angles` section.
 | `viewOffNadir` | The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0°-90°) |
 | `viewIncidence` | The incidence angle is the angle between the vertical (normal) to the intercepting surface and the line of sight back to the satellite at the scene center. Measured in degrees (0°-90°) |
 | `viewAzimuth` | Viewing azimuth angle. The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north. Measured clockwise from north in degrees (0°-360°) |
-
-### Geometric
-
-This table details certain properties of the sensors `geometric` section.
-| Property | Description      |
-|--------------|----------------------|
-| `imageDimensions` | A pair of numbers representing the number of pixels across track and along track respectively |
-| `spatialResolution` | The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track GSD |
-| `geometry` | A polygon representing the footprint on the band on Earth. Coordinates are for the projection above |
-| `quality` | This property indicates whether a systematic or precision band alignment strategy was followed for the band. See [Orthorectification quality](#orthorectification-quality) below for details |
-| `projection` | The geometric projection of this band onto the Earth. EPSG projections are used in the form “EPSG:XXXXX” |
 
 ### Orthorectification quality
 

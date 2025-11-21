@@ -1,30 +1,31 @@
-# FarEarth schemas
+# FarEarth image product documentation
 
-Below you will find the Format and Algorithm books used by *FarEarth*.
+This page lists the [Format](#format-books) and [Theory](#theory-books) books used by FarEarth. The Format books describe the product formats. The Theory books describe the algorithms used to create the products.
 
 ## Format books
 
-The files below present the format for products used in *FarEarth*.
-
-### Version 1.3 (Latest)
+From the table below, select the version of the Format book for a specific product type.
 
 | Product type  | Latest version |
 | ------------- | -------------- |
-| [Level 1C](Level%201/Format%20books/Level%201C/Version%201.3/README.md) | 1.3 |
-
-### Version 1.2
-
-| Product type  | Latest version |
-| ------------- | -------------- |
-| [Level 1A](Level%201/Format%20books/Level%201A/Version%201.2/README.md) | 1.2 |
-| [Level 1B](Level%201/Format%20books/Level%201B/Version%201.2/README.md) | 1.2 |
-| [Level 1C](Level%201/Format%20books/Level%201C/Version%201.2/README.md) | 1.2 |
+| Level 1A | [1.2](Level%201/Format%20books/Level%201A/Version%201.2/README.md) |
+| Level 1B | [1.2](Level%201/Format%20books/Level%201B/Version%201.2/README.md) |
+| Level 1C | [1.3 (draft)](Level%201/Format%20books/Level%201C/Version%201.3/README.md), [1.2](Level%201/Format%20books/Level%201C/Version%201.2/README.md) |
 
 ## Theory books
 
-The files below detail the algorithms used to create products in *FarEarth*.
+From the tables below, select the version of the Theory book for each processing stage.
 
-| Document  | Version |
+### Level 1 processing
+
+| Document  | Document version |
 | ------------- | -------------- |
-| [Level-1 Radiometric](Level%201/Theory%20books/Version-1.2/FarEarth-Algorithm-Theory-Radiometry-V1.2.pdf) | 1.2 |
-| [Level-1 Geometric](Level%201/Theory%20books/Version-1.2/FarEarth-Algorithm-Theory-Geometry-V1.2.pdf) | 1.2 |
+| Level 1 - Geometric processing | [1.2](Level%201/Theory%20books/Version%201.2/Theory_Book_L1_Geometric.md) |
+| Level 1 - Radiometric processing (Reflective) | [1.2](Level%201/Theory%20books/Version%201.2/Theory_Book_L1_Radiometric_Reflective.md) |
+| Level 1 - Radiometric processing (Emissive) | [1.2](Level%201/Theory%20books/Version%201.2/Theory_Book_L1_Radiometric_Emissive.md) |
+
+### Level 2 processing
+
+| Document  | Document version |
+| ------------- | -------------- |
+| Level 2 - Bottom of atmosphere products | [1.3](Level%202/Theory%20books/Version%201.3/Theory_Book_L2.md) |

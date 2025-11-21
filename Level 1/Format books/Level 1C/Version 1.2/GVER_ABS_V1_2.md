@@ -25,4 +25,4 @@ The distance between the geolocation of the tiepoints on the reference image and
 | `refBand` | The band ID of the reference image band being used during the comparison |
 | `refResolution` | The resolution of the reference image used during comparison |
 | `refSpacecraft` | The Spacecraft ID of the associated reference image |
-| `pixelColorMappings` | A legend to quantify disparities in colour ranges . This legend is used for the thumbnail referenced in `imageName` |
+| `pixelColorMappings` | A legend to quantify disparities in colour ranges. This legend is used for the thumbnail referenced in `imageName` |

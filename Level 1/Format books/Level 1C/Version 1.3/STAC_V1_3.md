@@ -57,7 +57,7 @@ The properties are specific to *FarEarth* and provide information based on the g
 
 |Property|Description|
 |---|---|
-|`processingBaseline`| Sentinel-2 processing baseline|
+|`processingBaseline`|Version of the processing algorithm|
 |`orthomodel`| Orthorectification model used during processing of the product. See [Orthorectification](#orthorectification)|
 |`fe:qaGeo:ce95`|Circular Error with a 95 % probability. It is a metric used to quantify the geometric accuracy of a product|
 |`fe:qaGeo:gsdX`|Minimum ground sampling distance of all the images in the product, in horizontal direction|

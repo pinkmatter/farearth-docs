@@ -21,7 +21,7 @@ This section contains explanations on specific properties of the absolute geomet
 
 ### Pixel Colour Mappings 
 This section describes the `pixelColorMappings` property.
-This provides a legend to quantify disparities in colour ranges . This legend is used for the thumbnail referenced in `imageName`. 
+This provides a legend to quantify disparities in colour ranges. This legend is used for the thumbnail referenced in `imageName`. 
 
 ## Reference: absolute geometric disparity metrics
 

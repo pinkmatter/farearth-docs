@@ -31,7 +31,7 @@ The Product properties consist of these objects:
 |`sensors`|Details relating to the sensors relevant to the product.See [Sensors](#sensors) |
 |`elevation`|Details relating to the elevation of the product.See [Elevation](#elevation)|
 |`pixelCount`| Number of pixels |
-|`software`| Information regarding the software used to generate the product . See [Software](#software)|
+|`software`| Information regarding the software used to generate the product. See [Software](#software)|
 |`thumbnailImageType`|The image format of the generated thumbnails. Must be one of: `["GEOTIFF_COG", "GEOTIFF", "BIG_GEOTIFF", "MEMORY", "PNG", "JPEG", "JP2000", "JP2000_LOSSLESS"]`|
 |`thumbnails`|An array of thumbnails. See [Thumbnails](#thumbnails)|
 |`viewingAngles`|The file containing the viewing angle information for the L1C product|
