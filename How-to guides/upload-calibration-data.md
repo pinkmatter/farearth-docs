@@ -8,28 +8,32 @@
 **NOTE**: *If you do not have access to FarEarth yet, reach out to your FarEarth system administrator for access.*
 
 ## Step 2: create an order
-Navigate to the burger bar (3 stripes) top left
+* Navigate to the hamburger menu (3 stripes) top left
 
-Click on "ORDERS"
+* Click on "ORDERS"
+* Click on the "CREATE ORDER" button
 
-![Step 2](images/menu-orders.png)
+![create-an-order](images/create-an-order.png)
 
-Click on the "CREATE ORDER" button
+## Step 3: choose a workflow
 
-Click on the "CALIBRATION" Wizard
+* Click on the "CALIBRATION" wizard
 
-KORT PRENTJIES HIER - SCREENSHOTS...
+![calibration-wizard](<Calibration workflow.png>)
 
-Drag and drop the calibration data or documents to the area indicated.
+## Step 4: upload data
 
-Enter a note with useful information about the content of the files uploaded.
+* Drag and drop your calibration data into the "Drop file or click here" box
+* Enter a note about the content of your files you  uploaded
+* Please wait for the files to upload
+* Click on the "GO" button
+* *FarEarth* will now create a new *Order* 
+* Your data will be uploaded to your *FarEarth* *Archive* 
+* To view the progress of your upload, navigate to the "ORDERS" page 
 
-After dragging files to the window, wait for the progress progress bars to fill before you continue. 
+![drag and drop](<Drag and drop.png>)
 
-## Step 3: Upload data
-* Click on the "GO" button.
-* A new *Order* to upload the data to the *Archive* will be created.
-* Navigate to the "ORDERS" page to view the progress of the upload.
+
 
 
 
