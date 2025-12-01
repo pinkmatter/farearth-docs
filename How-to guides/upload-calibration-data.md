@@ -19,7 +19,7 @@
 
 * Click on the "CALIBRATION" wizard
 
-![calibration-wizard](<Calibration workflow.png>)
+![calibration-wizard](images/calibration-workflow.png)
 
 ## Step 4: upload data
 
@@ -31,9 +31,4 @@
 * Your data will be uploaded to your *FarEarth* *Archive* 
 * To view the progress of your upload, navigate to the "ORDERS" page 
 
-![drag and drop](<Drag and drop.png>)
-
-
-
-
-
+![drag and drop](images/drag-and-drop.png)
