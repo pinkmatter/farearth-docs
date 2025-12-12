@@ -20,7 +20,7 @@ The document matches the *FarEarth* *Executors* with the same version numbers.
    + [Level 1C thumbnail file](#level-1c-thumbnail-file)
    + [Angle image files](#angle-image-files)
    + [Geometric verification files](#geometric-verification-files)
-* [Product *Quality Report* files](#product-quality-assessment-files)
+* [Product *Quality Report* files](#product-quality-reports)
 * [Metadata files](#metadata-files)
 * [Radiometric response](#radiometric-response)
 * [Document history](#document-history)
@@ -75,17 +75,17 @@ A Level 1C product sample is provided below as a resource referenced throughout 
 
 A Level 1C product produced by *FarEarth* is a Cloud Optimised GeoTIFF (COG) with embedded geospatial data. This allows you to open the product file in 3rd party tools. The COG file will automatically show at the correct geolocation on the Earth.
 
-Bands of similar dimensions are grouped together in the COG file. Bands in this file appear in the same order as in the band section of the metadata file. LZW compression and a block size of 512 are used. Level 1C products by default use a data format of Int16 and a no data value of -9999.
+Bands of similar dimensions can be grouped together in the COG file. Bands in this file appear in the same order as in the bands section of the main metadata file. LZW compression and a block size of 512 are used. Level 1C products by default use a data format of Int16 and a no data value of -9999.
 
 The scale of the pixel values is given in the radiometric section of the metadata file. 
 
 ### Data format and units
 The following Level 1C product data options are available and are dependent on the workflow and satellite.
 
-| Role | Asset description |
+| Option | Description |
 | ---- | ----------------- |
 | Digital Numbers | Pixel values in digital numbers as acquired by the sensor. Values have not been scaled to any units. |
-| Radiance | Pixel values in radiance. Images in radiance have absolute radiometric calibration applied to their digital numbers. The value of each pixel is in units of watts per square meter per steradian, in $\frac{W}{m^2sr}$ |
+| Radiance | Pixel values in radiance. Images in radiance have absolute radiometric calibration applied to their digital numbers. The value of each pixel is in $W/m^2 sr \mu m$ |
 | Top-of-Atmosphere Reflectance ($\times 10,000$) | The value of the pixels is the ratio of radiation reflected to the incident solar radiation, that is measured by a sensor above the atmosphere multiplied by $10\\^4$. The values are unitless.                          |
 
 ### Pixel nesting
@@ -103,9 +103,9 @@ Images processed by *FarEarth* from satellites with similar resolutions and proj
 ### Level 1C thumbnail file
 A thumbnail file is a low-resolution version of the actual product image. It is a small file meant to give you an overview of the product without the need to download the full data. A *FarEarth* product will contain at least one thumbnail. Multiple thumbnails may be included for to show different band combinations, masks or other information. Thumbnails may have different file types.
 
-Products may also include overview, visual or graphic assets that provide similar benefits but have a different format and are more specific to an aspect of the product.
-
 **Sample:** [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_RGB.png](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_RGB.png)
+
+Products may also include overview, visual or graphic assets that provide similar benefits but have a different format and are more specific to an aspect of the product.
 
 ### Angle image files
 Viewing angle and solar angle data are also provided in `.tif` data files. This data is geolocated to the same projection as the image. This file may be stacked on the image data to process it further.  
@@ -130,18 +130,18 @@ A view-angle file is provided for each processed band. Data is encoded in the fo
 
 **Sample:** [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_PAN_PAN_1_VIEW_ANGLE.tif](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_MS_BLUE_1_VIEW_ANGLE.tif)
 
-### Geometric verification files
+### Geometric Verification files
 
-The geometric verification files are produced as *Quality Reports* for every image. Two variants of the files are available, absolute and relative:
+The geometric verification files are produced as quality assessment files for every image. Two variants of the files are available, absolute and relative:
 
 * **Absolute products** compare a specific band of the image with reference data and contain the measured geometric error of tiepoints found on the image
 
 * **Relative products** compare bands of the image and contain the measured geometric error of tiepoints found on the image
 
-The comparison between a specific band of an image and a reference image, and between the two bands of an image, is performed in the same way. Tiepoints are collected for both. These tiepoints are independent of the tiepoints collected to process the image. The tiepoints between the reference and the image are matched to find similar ones. The distance between the geolocation of the tiepoints on the reference image and the tiepoints on the processed image is measured.
+The comparison between a specific band of an image and a reference image, and between the two bands of an image, is performed in the same way. Tiepoints are collected for both. These tiepoints were determined independently. The distance between the location of the tiepoints on the reference image and the processed image is measured and reported as disparities in X and Y together with coordinates. Disparities are given in meters.
 
 #### Geometric verification absolute thumbnail
-The geometric verification thumbnail that is produced by *FarEarth* is a visual indication of the tiepoints that were matched as part of the process above. The colour of the points indicates the difference between the reference and image in pixels at the GSD of the image.
+The geometric verification thumbnail that is produced by *FarEarth* is a visual indication of the tiepoints that were matched as part of the process above. The colour of the points gives an indication of the size of the disparity between the reference in terms of the pixel size of the image. The colour mapping is given in the relevant metadata file.
 
 **Sample:** [GVER_ABS_RED.png](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/GVER_ABS_RED.png)
 
@@ -163,9 +163,9 @@ Patterns in the disparities generally indicate that there is some satellite move
 Isolated islands of tiepoints that are different from their surroundings can indicate an inaccurate DEM or inaccurate modelling of the radiometric properties of the sensor.
 
 ## Product *Quality Reports* 
-A Level 1C product has one *Quality Report* per band listed in the *metadata* file.
+A Level 1C product has one *Quality Report* per group listed in the *metadata* file.
 
- A *Quality Report* is an image file containing the quality assessment mask for the band. Each pixel in the mask indicates the quality of the corresponding pixel in the band data. The mask is therefore in the same map projection as the band data. 
+A *quality assessment* file is an image file containing the quality assessment mask for the group. Each pixel in the mask indicates the quality of the corresponding pixel in the band data. The mask is therefore in the same map projection as the band data. The possible pixel values of the mask are listed in the table below.
 
 | Value | Description |
 | ----- | ------- |
@@ -175,19 +175,19 @@ A Level 1C product has one *Quality Report* per band listed in the *metadata* fi
 
 ## Metadata files
 
-One or more files containing metadata are created with each *FarEarth* product. These files describe the product and conditions under which the data was acquired. 
+One or more files containing metadata are created with each *FarEarth* product. These files describe the product and conditions under which the data was acquired, as well as processing information. 
 
 An overview of the different files containing metadata of the Level 1C product are listed below.
 
 | File              | Description |
 | ----------------- | ------- |
 | [Product file](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json)      | The product file contains metadata and references to the other files that make up a product|
-| [Main metadata](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson)     | The main metadata file for the product. Typically has the extension ``.geojson`` and is readable by third-party applications. |
-| [Viewing angles](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES.json)    | *FarEarth* may be configured to publish viewing-angle data for blocks of pixels as well as average values for the scenes. This file has JSON structures that present the viewing angle data in a machine-readable format. |
-| [Pointing](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json)          | The pointing file contains the pointing accuracy of the product at different levels in a `.json` data structure|
+| [Main metadata](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson)     | The main metadata file for the product. Typically has the extension ``.geojson`` and is readable by third-party applications |
+| [Viewing angles](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES.json)    | *FarEarth* may be configured to publish viewing-angle data for blocks of pixels as well as average values for the scenes. This file has JSON structures that present the viewing angle data in a machine-readable format |
+| [Pointing](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json)          | The pointing file contains pointing information of the product at different processing levels in a `.json` data structure |
 | [GVerify - absolute](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_ABS.json)   | Quality of the absolute geometric orthorectification |
 | [GVerify - relative](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_REL.json) | Quality of the relative geometric band-alignment  |
-| [Spectral response](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_SPECTRAL_RESPONSE.csv) | A `.csv` file with data representing the radiometric response of the sensor |
+| [Spectral response](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_SPECTRAL_RESPONSE.csv) | A `.csv` file with data representing the radiometric spectral response of the sensor |
 
 ## Radiometric response
 

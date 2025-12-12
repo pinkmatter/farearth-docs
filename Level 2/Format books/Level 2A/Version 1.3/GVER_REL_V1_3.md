@@ -1,6 +1,6 @@
-##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Relative geometric disparity
+##### [Home](../../../../README.md) > [Level 2](../../../../Level%202/) > [Format books](../../../Format%20books/) > [Level 2A](../../Level%202A/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Relative geometric disparity
 
-# Level 1C relative geometric disparity metrics
+# Level 2A relative geometric disparity metrics
 
 ## Introduction
 
@@ -14,7 +14,7 @@ The relative geometric verification metadata file is similar to the absolute geo
 
 ## Sample file
 
-**Sample:** [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_REL.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_REL.json)
+**Sample:** [LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_GVER_REL.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L2A/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_GVER_REL.json)
 
 ## Property details
 This section contains explanations on specific properties of the relative geometric disparity metrics file. All the properties that have been expanded on are listed in a structured manner under the [Reference](#reference-relative-geometric-disparity-metrics) section.

@@ -1,6 +1,6 @@
-##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Product metadata
+##### [Home](../../../../README.md) > [Level 2](../../../../Level%202/) > [Format books](../../../Format%20books/) > [Level 2A](../../Level%202A/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Product metadata
 
-# Level 1C product metadata
+# Level 2A product metadata
 
 ## Introduction
 This is the main metadata file that describes the product. This file has the extension `.geojson` and is readable by third-party applications. This file is made up of a feature collection with a single feature representing the product properties, including sensor properties. 
@@ -11,7 +11,7 @@ Refer to the [Reference](#reference-product-metadata) for a full breakdown of al
 
 ## Sample file
 
-**Sample** : [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson)
+**Sample** : [LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1.geojson](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L2A/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1.geojson)
 
 ## Property details
 This section contains explanations on specific properties of the product metadata file. All the properties that have been expanded on are listed in the [Reference](#reference-product-metadata) section.
@@ -62,26 +62,26 @@ This table details certain properties of the `geometric` section under the `imag
 | `quality` | This property indicates whether a systematic or precision band alignment strategy was followed for the image |
 | `projection` | The geometric projection of this image onto the Earth. EPSG projections are used in the form "EPSG:XXXXX" |
 | `imageDimensions` | A pair of numbers representing the number of pixels in the horizontal and vertical directions respectively |
-| `spatialResolution` | The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track GSD |
-| `geometry` | A polygon representing the footprint on the iamge on Earth. Coordinates are for the projection above |
+| `spatialResolution` | The target size of each pixel when projected onto the Earth across track and along track respectively. The along track value may be negative, to reflect the convention of the upper left corner of the image having coordinate `[0, 0]`, while pixel rows are counted from the first row of the sensor. In this case the absolute value of the number is the along track target resolution (often set the same as the GSD) |
+| `geometry` | A polygon representing the footprint on the image on Earth. Coordinates are for the projection above |
 
 ### Angles
 
 This table details certain properties of the `angles` section.
 
-| Property | Description      |
-|--------------|----------------------|
-| `sunAzimuth` | Sun azimuth angle. From the scene centre point on the ground, this is the angle between true north and the sun. Measured clockwise in degrees (0° - 360°)     |
-| `sunElevation` | Sun elevation angle. The angle from the tangent of the scene centre point to the sun. Measured from the horizon in degrees (-90° - 90°). Negative values indicate the sun is below the horizon, e.g. sun elevation of -10° means the data was captured during nautical twilight |
-| `viewOffNadir` | The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0°-90°) |
+| Property        | Description      |
+|-----------------|----------------------|
+| `sunAzimuth`    | Sun azimuth angle. From the scene centre point on the ground, this is the angle between true north and the sun. Measured clockwise in degrees (0° - 360°)     |
+| `sunElevation`  | Sun elevation angle. The angle from the tangent of the scene centre point to the sun. Measured from the horizon in degrees (-90° - 90°). Negative values indicate the sun is below the horizon, e.g. sun elevation of -10° means the data was captured during nautical twilight |
+| `viewOffNadir`  | The angle from the sensor between nadir (straight down) and the scene center. Measured in degrees (0°-90°) |
 | `viewIncidence` | The incidence angle is the angle between the vertical (normal) to the intercepting surface and the line of sight back to the satellite at the scene center. Measured in degrees (0°-90°) |
-| `viewAzimuth` | Viewing azimuth angle. The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north. Measured clockwise from north in degrees (0°-360°) |
+| `viewAzimuth`   | Viewing azimuth angle. The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north. Measured clockwise from north in degrees (0°-360°) |
 
 ### Orthorectification quality
 
 This table documents the `quality` section under the `sensors` section.
-| Property | Description      |
-|--------------|----------------------|
+| Property             | Description      |
+|----------------------|----------------------|
 | `orthorectification` | The orthorectification type is either **systematic** or **precision**. The orthorectification type of an image is precision if the reference band has an orthorectification type of precision |
 
 #### Systematic orthorectification
@@ -96,8 +96,8 @@ The geometry section defines the full footprint of the image. It is formatted ac
 
 This table documents the descriptor section of the sensor.
 | Property | Description |
-| ------ | ---|
-| `type` | The type of shape that is described in the `coordinates` property |
+| ------------- | ---|
+| `type`        | The type of shape that is described in the `coordinates` property |
 | `coordinates` | A list of (x,y) coordinates forming a closed image outline (with units in the stated projection). |
 
 ## Reference: product metadata
@@ -117,13 +117,14 @@ The following reference describes the content of the product metadata file.
       - **`name`** *(string)*: The name or ID of the software package.
       - **`revision`** *(string)*: A revision hash that further serves as identifying the exact software package version.
       - **`version`** *(string)*: A version uniquely identifying the software package.
+- **`atmosImage`** *(string)*: The file name of the atmospheric data used for corrections.
 - **`bandMapping`** *(object)*: A mapping of band ID to index.
 - **`cloudCover`** *(number, format: float)*: The cloud cover percentage (0.0 to 100.0).
 - **`cloudsImage`** *(string)*: The file name of the cloud probability image.
 - **`descriptor`** *(object)*: Meta-data relevant to the product (Spacecraft, sensor, date-range of the product).
   - **`processedDate`** *(string, format: date-time)*: The date on which the product was generated.
   - **`productId`** *(string)*: The ID identifying the product.
-  - **`productType`** *(string)*: This will always be 'L1C'.
+  - **`productType`** *(string)*: The product type.
   - **`sceneCol`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the column index will reflect adjacent tiles across track starting counting at 1 for left-most scene. The interval will have at least one column, even it the interval is not subdivided.
   - **`sceneRow`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the row index will increment proportionally along track (starting at 1). The interval will have at least one row, even it the interval is not subdivided.
   - **`sensors`** *(array)*: A list of sensor IDs relevant to the product (if required, with preference for hyphenated separators instead of spaces or underscores).
@@ -140,18 +141,19 @@ The following reference describes the content of the product metadata file.
         - *number*
 - **`elevation`** *(object)*: Details relating to the elevation of the product.
   - **`averageHae`**: The average height above ellipsoid in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
-  - **`averageMsl`**: The average mean sea level in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
+  - **`averageMsl`**: The average height above the mean sea level in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
 - **`pixelCount`** *(integer, format: int64)*: The total number of pixels across all bands of the product.
 - **`sensors`** *(array)*: Details relating to the sensors relevant to the product.
   - **Items** *(object)*
     - **`descriptor`** *(object)*: Details relating to the imaging sensor (name, detector ID's, etc).
       - **`ancillaries`** *(object)*: Ancillary reference files used as calibration input during processing.
+        - **`apf`** *(string)*: The name of the atmospheric calibration parameter file used during processing.
         - **`cpf`** *(string)*: The name of the general geometric calibration parameter file used during processing.
         - **`rpf`** *(string)*: The name of the radiometric calibration parameter file used during processing.
       - **`ids`** *(array)*: The detector IDs associated with the sensor.
         - **Items** *(string)*
       - **`name`** *(string)*: The name or unique ID for the sensor.
-    - **`images`** *(array)*: Details related to image that were generated that is associated with the sensor.
+    - **`images`** *(array)*: Details related to images that were generated that is associated with the sensor.
       - **Items** *(object)*
         - **`angles`** *(object)*: Solar and view angles relevant to the image.
           - **`sunAzimuth`**: From the scene center point on the ground, this is the angle between truth north and the sun (measured clockwise in degrees between 0 and 360). Refer to *[#/$defs/ValueDegrees](#%24defs/ValueDegrees)*.
@@ -194,21 +196,28 @@ The following reference describes the content of the product metadata file.
               - **`band`** *(string)*: The name of the imaging band.
               - **`units`** *(string)*: Typically 'W / (m^2 * um)'.
               - **`value`** *(number, format: double)*: The ESUN value of the band in question.
-          - **`pixelUnits`** *(string)*: The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Reflectance x 10k' denoting x10,000 scaled top-of-atmosphere reflectance, or 'TOA Brightness Temperature x 10 (K)' denoting x10 scaled top-of-atmosphere brightness temperature in Kelvin).
+          - **`pixelUnits`** *(string)*: The pixel value representation of the image data ('Surface Reflectance x 10k', 'Surface Temperature x 100', or 'Surface Emissivity x 10k (optional)').
           - **`radianceConversion`** *(array)*: A list of radiance conversion values for for each band. The conversion values are only applicable to reflective bands. Will be omitted if empty.
             - **Items** *(object)*
               - **`band`** *(string)*: The name of the imaging band.
               - **`gain`** *(number, format: double)*: The gain of the imaging band.
               - **`offset`** *(number, format: double)*: The offset of the imaging band.
-          - **`spectral`** *(array)*: The spectral properties of the sensor.
+          - **`spectral`** *(array)*: The spectral band layout of the sensor.
             - **Items** *(object)*
               - **`band`** *(string)*: The name of the imaging band.
               - **`centerWavelength`** *(number, format: double)*: The center band wavelength (in nanometers).
               - **`fullWidthHalfMax`** *(number, format: double)*: The full-width half-max bandwidth of the band in question (in nanometers).
     - **`quality`** *(object)*: Quality metrics generated during processing.
+      - **`atmospheric`** *(object)*: Quality of the atmospheric data used during processing.
+        - **`aerosols`** *(object)*: The quality of the aerosol data used for atmospheric correction.
+          - **`source`**: The source of the data for this atmospheric band (DETECTED, PREDICTED, ANCILLARY or FALLBACK). Refer to *[#/$defs/L2AAuxDataSource](#%24defs/L2AAuxDataSource)*.
+        - **`ozone`** *(object)*: The quality of the ozone data used for atmospheric correction.
+          - **`source`**: The source of the data for this atmospheric band (DETECTED, PREDICTED, ANCILLARY or FALLBACK). Refer to *[#/$defs/L2AAuxDataSource](#%24defs/L2AAuxDataSource)*.
+        - **`waterVapor`** *(object)*: The quality of the water vapor data used for atmospheric correction.
+          - **`source`**: The source of the data for this atmospheric band (DETECTED, PREDICTED, ANCILLARY or FALLBACK). Refer to *[#/$defs/L2AAuxDataSource](#%24defs/L2AAuxDataSource)*.
       - **`geometric`** *(object)*: Geometric quality metrics generated during processing.
         - **`orthorectification`** *(string)*: To what model quality orthorectification was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'. Must be one of: `["systematic", "precision"]`.
-- **`software`** *(object)*: Details regarding the software used to generate the L1C product.
+- **`software`** *(object)*: Details regarding the software used to generate the L2A product.
   - **`name`** *(string)*
   - **`version`** *(string)*
 - **`spectralResponses`** *(string)*: The file name in which all the spectral responses for all bands can be found.
@@ -217,9 +226,10 @@ The following reference describes the content of the product metadata file.
   - **Items** *(object)*: Thumbnail details.
     - **`image`** *(string)*: The file name of the thumbnail image.
     - **`name`** *(string)*: The ID used to distinguish between different thumbnails.
-- **`viewingAngles`** *(string)*: The file name in which all the viewing of the product can be found.
+- **`viewingAngles`** *(string)*: The file name in which all the viewing angles of the product can be found.
 ## Definitions
 
+- <a id="%24defs/L2AAuxDataSource"></a>**`L2AAuxDataSource`** *(string)*: Must be one of: `["DETECTED", "PREDICTED", "ANCILLARY", "FALLBACK"]`.
 - <a id="%24defs/ValueDegrees"></a>**`ValueDegrees`** *(object)*
   - **`units`** *(string)*: The SI unit the value is expressed in.
   - **`value`** *(number, format: double)*: The scalar value quantity.

@@ -15,6 +15,7 @@ From the table below, select the version of the Format book for a specific produ
 | Level 1A | [1.2](Level%201/Format%20books/Level%201A/Version%201.2/README.md) |
 | Level 1B | [1.2](Level%201/Format%20books/Level%201B/Version%201.2/README.md) |
 | Level 1C | [1.3 (draft)](Level%201/Format%20books/Level%201C/Version%201.3/README.md), [1.2](Level%201/Format%20books/Level%201C/Version%201.2/README.md) |
+| Level 2A | [1.3 (draft)](Level%202/Format%20books/Level%202A/Version%201.3/README.md) |
 
 ## Theory books
 

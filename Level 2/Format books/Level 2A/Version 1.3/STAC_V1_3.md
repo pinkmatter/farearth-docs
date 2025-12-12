@@ -1,14 +1,15 @@
-##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > STAC product
+##### [Home](../../../../README.md) > [Level 2](../../../../Level%202/) > [Format books](../../../Format%20books/) > [Level 2A](../../Level%202A/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > STAC product
 
-# Level 1C STAC product
+# Level 2A STAC product
 
 ## Introduction
 
-This document describes the Level 1C product JSON (`.json`) file. The product file contains metadata and references to the other files that make up a product. The Level 1C product file complies with the STAC specification. STAC is a standardized way to expose collections of spatial temporal data. For more information about the STAC specification, refer to [The STAC Specification](https://stacspec.org/en/about/stac-spec/).
+This document describes the Level 2A product JSON (`.json`) file. The product file contains metadata and references to the other files that make up a product. The Level 2A product file complies with the STAC specification. STAC is a standardized way to expose collections of spatio-temporal data. For more information about the STAC specification, refer to [The STAC Specification](https://stacspec.org/en/about/stac-spec/).
 
 ## Sample file
 
-**Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json)
+[//]: <> (File and link must still be updated)
+**Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_product.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L2A/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_product.json)
 
 # STAC extensions
 
@@ -27,16 +28,17 @@ Product files may also contain high-level metadata used to index the product in 
 
 |Role|Asset description|
 |---|---|
-|`data`|Image data|
-|`metadata`| Metadata about the product|
-|`quality`| Information about the geometric quality of the products|
-|`thumbnail`| Overview / preview images of the products |
-|`angles`| Information about the viewing and solar angles |
-|`gverify`| Information on the geometric verification of the product|
-|`aux`| Additional files required by the product|
+| `atmospheric`| Optional data product produced with the atmospheric information |
+| `data` | Image data |
+| `metadata` | Metadata about the product |
+| `quality` | Information about the quality of the products |
+| `thumbnail` | Overview / preview images of the products |
+| `angles` | Information about the viewing and solar angles |
+| `gverify` | Information on the geometric verification of the product |
+| `aux` | Additional files required by the product |
 
 ## Properties
-The Level 1C product JSON has a `properties` section with various details about the product at hand.
+The Level 2A product JSON has a `properties` section with various details about the product at hand.
 
 Certain *FarEarth* specific properties have been grouped into categories below.
 

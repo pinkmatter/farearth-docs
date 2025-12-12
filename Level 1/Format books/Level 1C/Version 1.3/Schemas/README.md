@@ -4,7 +4,7 @@ The following **Version 1.3** schema files are available for **Level 1C** produc
 
 | Name | Description | Schemas |
 |------|-------------|---------|
-| METADATA | Product metadata in GeoJSON format | [JSON](METADATA_V1_3.json), [XML](PRODUCT_METADATA_V1_3.xsd)   |
+| METADATA | Product metadata in GeoJSON or XML format | [JSON](METADATA_V1_3.json), [XML](PRODUCT_METADATA_V1_3.xsd)   |
 | GVER_ABS_V1_3 | Absolute geometric accuracy statistics | [JSON](GVER_ABS_V1_3.json)    |
 | GVER_REL_V1_3 | Relative (band-to-band) geometric accuracy statistics | [JSON](GVER_REL_V1_3.json)    |
 | POINTING | Metrics of pixel geolocation accuracies | [JSON](POINTING_V1_3.json)    |

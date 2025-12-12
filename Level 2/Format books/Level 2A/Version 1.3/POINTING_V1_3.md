@@ -1,16 +1,16 @@
-##### [Home](../../../../README.md) > [Level 1](../../../../Level%201/) > [Format books](../../../Format%20books/) > [Level 1C](../../Level%201C/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Geometric pointing
+##### [Home](../../../../README.md) > [Level 2](../../../../Level%202/) > Format books](../../../Format%20books/) > [Level 2A](../../Level%202A/) > [Version 1.3](../Version%201.3/) > [Format book](README.md) > Geometric pointing
 
-# Level 1C geometric pointing metrics
+# Level 2A geometric pointing metrics
 
 ## Introduction
 
-The pointing file contains measurements for each sensor, detailing the type of orthorectification model used. 
+The pointing file contains geolocation measurements as well as the type of orthorectification model used. 
 
-These metrics provide insights into the accuracy of the satellite's sensors. They can inform when new calibration data is required to maintain the quality of the images.
+These metrics provide insights into the geolocation accuracy of the satellite's sensors. They can inform when new calibration data is required to maintain the quality of the images.
 
 ## Sample file
 
-**Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json)
+**Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_POINTING.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L2A/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_POINTING.json)
 
 ## Detailed Property Explanations
 
