@@ -10,7 +10,7 @@ This document describes the Level 1C product JSON (`.json`) file. The product fi
 
 **Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json)
 
-# STAC extensions
+## STAC extensions
 
 The *FarEarth* product file makes use of STAC extensions. The list of the STAC extensions used in *FarEarth*:
 

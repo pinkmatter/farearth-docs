@@ -29,7 +29,7 @@ The following reference describes the content of the relative geometric disparit
 
 - **`measurements`** *(array)*: A list of disparity metrics grouped by individual bands.
   - **Items** *(object)*
-    - **`coordsLatLon`** *(array)*: The (longitude, latitude) coordinates of the evaluated tie-points.
+    - **`coordsLonLat`** *(array)*: The (longitude, latitude) coordinates of the evaluated tie-points.
       - **Items** *(array)*
         - **Items** *(number, format: double)*
     - **`disparitiesXYInMeters`** *(array)*: A list of (x,y) disparities of the evaluated tie-points (in meters).

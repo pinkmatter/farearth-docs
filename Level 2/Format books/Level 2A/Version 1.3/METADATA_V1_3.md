@@ -121,6 +121,7 @@ The following reference describes the content of the product metadata file.
 - **`bandMapping`** *(object)*: A mapping of band ID to index.
 - **`cloudCover`** *(number, format: float)*: The cloud cover percentage (0.0 to 100.0).
 - **`cloudsImage`** *(string)*: The file name of the cloud probability image.
+- **`dayNight`** *(string)*: Day/night depending on sun elevation (night when sun elevation is negative). Must be one of: `["DAY", "NIGHT"]`.
 - **`descriptor`** *(object)*: Meta-data relevant to the product (Spacecraft, sensor, date-range of the product).
   - **`processedDate`** *(string, format: date-time)*: The date on which the product was generated.
   - **`productId`** *(string)*: The ID identifying the product.
@@ -141,8 +142,10 @@ The following reference describes the content of the product metadata file.
         - *number*
 - **`elevation`** *(object)*: Details relating to the elevation of the product.
   - **`averageHae`**: The average height above ellipsoid in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
-  - **`averageMsl`**: The average height above the mean sea level in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
+  - **`averageMsl`**: The average mean sea level in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
 - **`pixelCount`** *(integer, format: int64)*: The total number of pixels across all bands of the product.
+- **`processingParameters`** *(object)*: Parameters used during processing.
+  - **`resampler`** *(string)*
 - **`sensors`** *(array)*: Details relating to the sensors relevant to the product.
   - **Items** *(object)*
     - **`descriptor`** *(object)*: Details relating to the imaging sensor (name, detector ID's, etc).
@@ -153,7 +156,7 @@ The following reference describes the content of the product metadata file.
       - **`ids`** *(array)*: The detector IDs associated with the sensor.
         - **Items** *(string)*
       - **`name`** *(string)*: The name or unique ID for the sensor.
-    - **`images`** *(array)*: Details related to images that were generated that is associated with the sensor.
+    - **`images`** *(array)*: Details related to image that were generated that is associated with the sensor.
       - **Items** *(object)*
         - **`angles`** *(object)*: Solar and view angles relevant to the image.
           - **`sunAzimuth`**: From the scene center point on the ground, this is the angle between truth north and the sun (measured clockwise in degrees between 0 and 360). Refer to *[#/$defs/ValueDegrees](#%24defs/ValueDegrees)*.
@@ -196,7 +199,7 @@ The following reference describes the content of the product metadata file.
               - **`band`** *(string)*: The name of the imaging band.
               - **`units`** *(string)*: Typically 'W / (m^2 * um)'.
               - **`value`** *(number, format: double)*: The ESUN value of the band in question.
-          - **`pixelUnits`** *(string)*: The pixel value representation of the image data ('Surface Reflectance x 10k', 'Surface Temperature x 100', or 'Surface Emissivity x 10k (optional)').
+          - **`pixelUnits`** *(string)*: The pixel value representation of the image data (either 'Surface Reflectance x 10k' denoting x10,000 scaled surface reflectance, or 'Surface Temperature x 10 (K)' denoting x10 scaled surface temperature in Kelvin).
           - **`radianceConversion`** *(array)*: A list of radiance conversion values for for each band. The conversion values are only applicable to reflective bands. Will be omitted if empty.
             - **Items** *(object)*
               - **`band`** *(string)*: The name of the imaging band.
@@ -226,7 +229,7 @@ The following reference describes the content of the product metadata file.
   - **Items** *(object)*: Thumbnail details.
     - **`image`** *(string)*: The file name of the thumbnail image.
     - **`name`** *(string)*: The ID used to distinguish between different thumbnails.
-- **`viewingAngles`** *(string)*: The file name in which all the viewing angles of the product can be found.
+- **`viewingAngles`** *(string)*: The file name in which all the viewing of the product can be found.
 ## Definitions
 
 - <a id="%24defs/L2AAuxDataSource"></a>**`L2AAuxDataSource`** *(string)*: Must be one of: `["DETECTED", "PREDICTED", "ANCILLARY", "FALLBACK"]`.

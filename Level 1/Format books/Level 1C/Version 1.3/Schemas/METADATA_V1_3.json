@@ -124,6 +124,12 @@
       "title" : "Clouds file name",
       "description" : "The file name of the cloud probability image."
     },
+    "dayNight" : {
+      "type" : "string",
+      "enum" : [ "DAY", "NIGHT" ],
+      "title" : "Day/Night flag",
+      "description" : "Day/night depending on sun elevation (night when sun elevation is negative)"
+    },
     "descriptor" : {
       "type" : "object",
       "properties" : {
@@ -141,7 +147,7 @@
         "productType" : {
           "type" : "string",
           "title" : "Product type",
-          "description" : "This will always be 'L1C'."
+          "description" : "The product type."
         },
         "sceneCol" : {
           "type" : "integer",
@@ -216,6 +222,17 @@
       "title" : "Pixel count",
       "description" : "The total number of pixels across all bands of the product."
     },
+    "processingParameters" : {
+      "type" : "object",
+      "properties" : {
+        "resampler" : {
+          "type" : "string",
+          "title" : "The resampler used during product generation"
+        }
+      },
+      "title" : "Parameters used during processing",
+      "description" : "Parameters used during processing."
+    },
     "sensors" : {
       "title" : "Sensor listing",
       "description" : "Details relating to the sensors relevant to the product.",
@@ -229,6 +246,11 @@
               "ancillaries" : {
                 "type" : "object",
                 "properties" : {
+                  "apf" : {
+                    "type" : "string",
+                    "title" : "APF file name",
+                    "description" : "The name of the atmospheric calibration parameter file used during processing."
+                  },
                   "cpf" : {
                     "type" : "string",
                     "title" : "CPF file name",
@@ -470,7 +492,7 @@
                     "pixelUnits" : {
                       "type" : "string",
                       "title" : "Pixel unit representation",
-                      "description" : "The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Reflectance x 10k' denoting x10,000 scaled top-of-atmostphere reflectance, or 'TOA Brightness Temperature x 10 (K)' denoting x10 scaled top-of-atmosphere brightness temperature in Kelvin)."
+                      "description" : "The pixel value representation of the image data (either 'DN' denoting raw digital numbers, or 'TOA Reflectance x 10k' denoting x10,000 scaled top-of-atmosphere reflectance, or 'TOA Brightness Temperature x 10 (K)' denoting x10 scaled top-of-atmosphere brightness temperature in Kelvin)."
                     },
                     "radianceConversion" : {
                       "title" : "Radiance conversion values",
@@ -547,7 +569,7 @@
                   }
                 },
                 "title" : "Geometric quality correction metrics",
-                "description" : "Geometrics quality metrics generated during processing."
+                "description" : "Geometric quality metrics generated during processing."
               }
             },
             "title" : "Sensor correction quality metrics",
@@ -600,7 +622,7 @@
             "description" : "The ID used to distinguish between different thumbnails"
           }
         },
-        "title" : "L1C Thumbnail",
+        "title" : "Thumbnail",
         "description" : "Thumbnail details"
       }
     },

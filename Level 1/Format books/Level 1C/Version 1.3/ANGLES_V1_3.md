@@ -3,7 +3,7 @@
 # Level 1C angle metadata file
 
 ## Introduction
-This is the angle file pixel data averaged across the whole scene. The file provides data on both the viewing incidence angles and solar angles. 
+This files gives gridded solar and viewing angle values as well as the averaged values across the whole scene
 
 ## Sample file 
 
@@ -75,7 +75,7 @@ The following reference describes the content of the angle metadata file.
 - **`sunAngles`** *(object)*: Angle grid describing how the sun is pointing towards the product.
   - **`azimuth`**: Solar azimuth values where the scene is subdivided in a grid of averaged values. Refer to *[#/$defs/Angle](#%24defs/Angle)*.
   - **`zenith`**: Solar zenith values where the scene is subdivided in a grid of averaged values. Refer to *[#/$defs/Angle](#%24defs/Angle)*.
-- **`viewingIncidenceAngles`** *(array)*: Angle grid listing the incidence angles per band and detector ID.
+- **`viewingIncidenceAngles`** *(array)*: Angle grid listing the incidence angles per band and detector ID, in a grid defined as specified by the column and row step size and units.
   - **Items** *(object)*
     - **`azimuth`**: An averaged grid of azimuth viewing incidence angles. Refer to *[#/$defs/Angle](#%24defs/Angle)*.
     - **`bandId`** *(string)*

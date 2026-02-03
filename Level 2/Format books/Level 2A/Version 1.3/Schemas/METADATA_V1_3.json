@@ -133,6 +133,12 @@
       "title" : "Clouds file name",
       "description" : "The file name of the cloud probability image."
     },
+    "dayNight" : {
+      "type" : "string",
+      "enum" : [ "DAY", "NIGHT" ],
+      "title" : "Day/Night flag",
+      "description" : "Day/night depending on sun elevation (night when sun elevation is negative)"
+    },
     "descriptor" : {
       "type" : "object",
       "properties" : {
@@ -224,6 +230,17 @@
       "format" : "int64",
       "title" : "Pixel count",
       "description" : "The total number of pixels across all bands of the product."
+    },
+    "processingParameters" : {
+      "type" : "object",
+      "properties" : {
+        "resampler" : {
+          "type" : "string",
+          "title" : "The resampler used during product generation"
+        }
+      },
+      "title" : "Parameters used during processing",
+      "description" : "Parameters used during processing."
     },
     "sensors" : {
       "title" : "Sensor listing",

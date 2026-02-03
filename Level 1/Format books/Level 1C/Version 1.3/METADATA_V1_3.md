@@ -120,10 +120,11 @@ The following reference describes the content of the product metadata file.
 - **`bandMapping`** *(object)*: A mapping of band ID to index.
 - **`cloudCover`** *(number, format: float)*: The cloud cover percentage (0.0 to 100.0).
 - **`cloudsImage`** *(string)*: The file name of the cloud probability image.
+- **`dayNight`** *(string)*: Day/night depending on sun elevation (night when sun elevation is negative). Must be one of: `["DAY", "NIGHT"]`.
 - **`descriptor`** *(object)*: Meta-data relevant to the product (Spacecraft, sensor, date-range of the product).
   - **`processedDate`** *(string, format: date-time)*: The date on which the product was generated.
   - **`productId`** *(string)*: The ID identifying the product.
-  - **`productType`** *(string)*: This will always be 'L1C'.
+  - **`productType`** *(string)*: The product type.
   - **`sceneCol`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the column index will reflect adjacent tiles across track starting counting at 1 for left-most scene. The interval will have at least one column, even it the interval is not subdivided.
   - **`sceneRow`** *(integer, format: int32)*: If an interval is subdivided into multiple scenes (or tiles), the row index will increment proportionally along track (starting at 1). The interval will have at least one row, even it the interval is not subdivided.
   - **`sensors`** *(array)*: A list of sensor IDs relevant to the product (if required, with preference for hyphenated separators instead of spaces or underscores).
@@ -142,10 +143,13 @@ The following reference describes the content of the product metadata file.
   - **`averageHae`**: The average height above ellipsoid in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
   - **`averageMsl`**: The average mean sea level in meters. Refer to *[#/$defs/ValueMeters](#%24defs/ValueMeters)*.
 - **`pixelCount`** *(integer, format: int64)*: The total number of pixels across all bands of the product.
+- **`processingParameters`** *(object)*: Parameters used during processing.
+  - **`resampler`** *(string)*
 - **`sensors`** *(array)*: Details relating to the sensors relevant to the product.
   - **Items** *(object)*
     - **`descriptor`** *(object)*: Details relating to the imaging sensor (name, detector ID's, etc).
       - **`ancillaries`** *(object)*: Ancillary reference files used as calibration input during processing.
+        - **`apf`** *(string)*: The name of the atmospheric calibration parameter file used during processing.
         - **`cpf`** *(string)*: The name of the general geometric calibration parameter file used during processing.
         - **`rpf`** *(string)*: The name of the radiometric calibration parameter file used during processing.
       - **`ids`** *(array)*: The detector IDs associated with the sensor.
@@ -200,7 +204,7 @@ The following reference describes the content of the product metadata file.
               - **`band`** *(string)*: The name of the imaging band.
               - **`gain`** *(number, format: double)*: The gain of the imaging band.
               - **`offset`** *(number, format: double)*: The offset of the imaging band.
-          - **`spectral`** *(array)*: The spectral properties of the sensor.
+          - **`spectral`** *(array)*: The spectral band layout of the sensor.
             - **Items** *(object)*
               - **`band`** *(string)*: The name of the imaging band.
               - **`centerWavelength`** *(number, format: double)*: The center band wavelength (in nanometers).

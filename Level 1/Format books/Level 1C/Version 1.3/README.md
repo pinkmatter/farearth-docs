@@ -20,7 +20,7 @@ The document matches the *FarEarth* *Executors* with the same version numbers.
    + [Level 1C thumbnail file](#level-1c-thumbnail-file)
    + [Angle image files](#angle-image-files)
    + [Geometric verification files](#geometric-verification-files)
-* [Product *Quality Report* files](#product-quality-reports)
+* [Product quality masks files](#product-quality-mask-files)
 * [Metadata files](#metadata-files)
 * [Radiometric response](#radiometric-response)
 * [Document history](#document-history)
@@ -130,7 +130,7 @@ A view-angle file is provided for each processed band. Data is encoded in the fo
 
 **Sample:** [LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_PAN_PAN_1_VIEW_ANGLE.tif](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_MS_BLUE_1_VIEW_ANGLE.tif)
 
-### Geometric Verification files
+### Geometric verification files
 
 The geometric verification files are produced as quality assessment files for every image. Two variants of the files are available, absolute and relative:
 
@@ -162,10 +162,10 @@ Patterns in the disparities generally indicate that there is some satellite move
 
 Isolated islands of tiepoints that are different from their surroundings can indicate an inaccurate DEM or inaccurate modelling of the radiometric properties of the sensor.
 
-## Product *Quality Reports* 
-A Level 1C product has one *Quality Report* per group listed in the *metadata* file.
+## Product quality mask files
+A Level 1C product has one product quality mask file per group listed in the metadata file.
 
-A *quality assessment* file is an image file containing the quality assessment mask for the group. Each pixel in the mask indicates the quality of the corresponding pixel in the band data. The mask is therefore in the same map projection as the band data. The possible pixel values of the mask are listed in the table below.
+A product quality mask file is an image file containing the quality assessment mask for the group. Each pixel in the mask indicates the quality of the corresponding pixel in the band data. The mask is therefore in the same map projection as the band data. The possible pixel values of the mask are listed in the table below.
 
 | Value | Description |
 | ----- | ------- |
@@ -182,8 +182,8 @@ An overview of the different files containing metadata of the Level 1C product a
 | File              | Description |
 | ----------------- | ------- |
 | [Product file](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_product.json)      | The product file contains metadata and references to the other files that make up a product|
-| [Main metadata](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson)     | The main metadata file for the product. Typically has the extension ``.geojson`` and is readable by third-party applications |
-| [Viewing angles](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES.json)    | *FarEarth* may be configured to publish viewing-angle data for blocks of pixels as well as average values for the scenes. This file has JSON structures that present the viewing angle data in a machine-readable format |
+| [Main metadata](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1.geojson)     | The main metadata file for the product. Typically has the extension ``.geojson`` and is readable by third-party applications. |
+| [Viewing angles](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_ANGLES.json)    | *FarEarth* may be configured to publish viewing-angle data for blocks of pixels as well as average values for the scenes. This file has JSON structures that present the viewing angle data in a machine-readable format. |
 | [Pointing](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_POINTING.json)          | The pointing file contains pointing information of the product at different processing levels in a `.json` data structure |
 | [GVerify - absolute](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_ABS.json)   | Quality of the absolute geometric orthorectification |
 | [GVerify - relative](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L1C/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L1C_R1C1_GVER_REL.json) | Quality of the relative geometric band-alignment  |

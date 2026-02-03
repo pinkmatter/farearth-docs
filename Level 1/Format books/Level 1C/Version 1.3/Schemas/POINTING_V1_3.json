@@ -16,7 +16,7 @@
             "description" : "To what model quality orthorectification was achieved (either 'systemic' or 'precision'). Any detector which failed precision refinement will result in a fallback to 'systematic'."
           },
           "points" : {
-            "title" : "L1C geometric pointing metrics",
+            "title" : "Geometric pointing metrics",
             "description" : "Metrics describing how the image location was adjusted from raw to processed, listed by sensor ID.",
             "type" : "array",
             "items" : {
@@ -91,6 +91,6 @@
       }
     }
   },
-  "title" : "L1C geometric pointing metrics",
+  "title" : "Geometric pointing metrics",
   "description" : "Metrics describing how the image location was adjusted from raw to processed."
 }

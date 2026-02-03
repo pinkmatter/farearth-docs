@@ -9,7 +9,7 @@
       "items" : {
         "type" : "object",
         "properties" : {
-          "coordsLatLon" : {
+          "coordsLonLat" : {
             "title" : "Disparity coordinates",
             "description" : "The (longitude, latitude) coordinates of the evaluated tie-points.",
             "type" : "array",

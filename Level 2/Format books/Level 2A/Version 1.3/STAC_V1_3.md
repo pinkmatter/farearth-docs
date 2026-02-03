@@ -8,7 +8,6 @@ This document describes the Level 2A product JSON (`.json`) file. The product fi
 
 ## Sample file
 
-[//]: <> (File and link must still be updated)
 **Sample** :  [LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_product.json](https://stfarearth3b2cstatic.blob.core.windows.net/product-samples/products/v1.3/L2A/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1/LANDSAT-9_OLI_20220804T083603_20220804T083634_L2A_R1C1_product.json)
 
 # STAC extensions

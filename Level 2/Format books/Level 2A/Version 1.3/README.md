@@ -19,8 +19,8 @@ The document matches the *FarEarth* *Executors* with the same version numbers.
    + [Pixel nesting](#pixel-nesting)
    + [Level 2A thumbnail file](#level-2a-thumbnail-file)
    + [Angle image files](#angle-image-files)
-   + [Geometric Verification files](#geometric-verification-files)
-* [Product quality masks files](#product-quality-report-files)
+   + [Geometric verification files](#geometric-verification-files)
+* [Product quality masks files](#product-quality-mask-files)
 * [Metadata files](#metadata-files)
 * [Spectral response](#spectral-response)
 ---
